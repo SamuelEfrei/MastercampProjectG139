@@ -30,9 +30,9 @@
                              Width="300" FontSize="18" BorderThickness="2"
                              materialDesign:HintAssist.Hint="Mot de passe"
                              Style="{StaticResource MaterialDesignOutlinedPasswordBox}"
-                             BorderBrush="{DynamicResource MaterialDesignDivider}"/>
+                             BorderBrush="{DynamicResource MaterialDesignDivider}" Cursor="Arrow"/>
 
-                <Button Margin="0 20 0 0" x:Name="btnLogin" Width="250" Height="40"
+                <Button Margin="0 20 0 0" x:Name="btnLogin" Click="BtnSubmit_Click" Width="250" Height="40"
                 FontSize="18" Content="CONNEXION"/>
             </StackPanel>
         </materialDesign:DialogHost>
