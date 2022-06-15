@@ -37,14 +37,14 @@ namespace MastercampProjectG139
 
         private void BtnSubmit_Click(object sender, RoutedEventArgs e)
         {
-            String connectionString = "SERVER=localhost;DATABASE=profil;UID=root;PASSWORD=password";
+            String connectionString = "SERVER=localhost;DATABASE=mastercamp;UID=root;PASSWORD=password";
             MySqlConnection connection = new MySqlConnection(connectionString);
 
             try
             {
                 if (connection.State == System.Data.ConnectionState.Closed)
                     connection.Open();
-                String query = "SELECT COUNT(1) FROM profil WHERE Username=@Username AND Password=@Password";
+                String query = "SELECT COUNT(1) FROM PersonnelSante WHERE numSSPersonnel=@Username AND mdp=@Password";
                 MySqlCommand mySqlCmd = new MySqlCommand(query, connection);
                 mySqlCmd.CommandType = System.Data.CommandType.Text;
                 mySqlCmd.Parameters.AddWithValue("@Username", txtNumSecu.Text);
@@ -58,7 +58,7 @@ namespace MastercampProjectG139
                 }
                 else
                 {
-                    MessageBox.Show("Username or Password is ");
+                    MessageBox.Show("Username or Password is wrong");
                 }
             }
             catch (Exception ex)
