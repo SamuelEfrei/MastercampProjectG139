@@ -18,7 +18,23 @@
             </Menu>
         </DockPanel>
         <StackPanel x:Name="panelTop">
-            
+            <Grid x:Name="leftGrid_panelTop" Height="90">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*" />
+                    <RowDefinition Height="2*" />
+                </Grid.RowDefinitions>
+                <TextBlock Text="Ajouter une ordonnance" Margin="10 0 0 0" VerticalAlignment="Center" FontWeight="Bold" FontSize="28" Grid.Column="0" Grid.Row="0" />
+                <Button x:Name="btn_addMedicament" Content="Ajouter un autre médicament" HorizontalAlignment="Left" Margin="10 0 0 0" Grid.Column="0" Grid.Row="1" Width="auto" />
+                <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Vertical"  HorizontalAlignment="Right" Margin="0 0 10 0" VerticalAlignment="Center">
+                    <TextBlock x:Name="txtBlock_nomPrenom" TextAlignment="Right" FontSize="15" FontStyle="Italic" Text="NOM Prénom" />
+                    <TextBlock Text="Médecin" FontSize="15" TextAlignment="Right" FontWeight="DemiBold" FontStyle="Italic" />
+                </StackPanel>
+                
+            </Grid>
         </StackPanel>
         <StackPanel x:Name="panelMiddle">
             
