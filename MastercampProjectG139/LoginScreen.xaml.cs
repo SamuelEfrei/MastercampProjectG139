@@ -27,12 +27,12 @@ namespace MastercampProjectG139
 
         private void CloseLoginBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Application.Current.Shutdown();
+            Application.Current.Shutdown(); //Ferme l'application
         }
 
         private void LoginCard_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            this.DragMove();
+            this.DragMove(); //Permet de déplacer la fenêtre n'importe où
         }
 
         private void BtnSubmit_Click(object sender, RoutedEventArgs e)
