@@ -22,10 +22,7 @@ namespace MastercampProjectG139
     {
         private Medecin medecin;
 
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
+        public MainWindow() => InitializeComponent();
 
         public MainWindow(Medecin medecin)
         {

@@ -78,19 +78,37 @@ namespace MastercampProjectG139
             String myStoredHash;
             Boolean verified;
 
+            //Données du personnel soignant
+            int idPS = -1;
+            string nom = "";
+            string prenom = "";
+            string mdp = "";
+
             try
             {
                 if (connection.State == System.Data.ConnectionState.Closed)
                     connection.Open();  //Lancement de la connexion avec la base de données
-                String query = "SELECT mdp FROM PersonnelSante WHERE numSSPersonnel=@Username"; //Requête SQL pour trouver le mdp correspondant à l'identifiant
+                string query = "SELECT idPS, nom, prenom, mdp FROM PersonnelSante WHERE numSSPersonnel=@Username"; //Requête SQL pour trouver le mdp correspondant à l'identifiant
                 MySqlCommand mySqlCmd = new MySqlCommand(query, connection);
+                
                 mySqlCmd.CommandType = System.Data.CommandType.Text;
                 mySqlCmd.Parameters.AddWithValue("@Username", txtNumSecu.Text); //Identifiant renseigné ici plutôt que dans requête SQL pour éviter injection SQL malveillante
-                var mySqlResult = mySqlCmd.ExecuteScalar().ToString(); //Récupération du mdp hashé de la bdd en type string
+                //var mySqlResult = mySqlCmd.ExecuteScalar().ToString(); //Récupération du mdp hashé de la bdd en type string
 
-                if (mySqlResult != null)
+                MySqlDataReader reader = mySqlCmd.ExecuteReader(); //Récupération des arguments demandés
+                while (reader.Read())
                 {
-                    myStoredHash = mySqlResult; 
+                    idPS = (int)reader["idPS"];
+                    nom = (string)reader["nom"];
+                    prenom = (string)reader["prenom"];
+                    mdp = (string)reader["mdp"];
+                }
+
+                reader.Close(); //On ferme le reader
+
+                if (mdp != null)
+                {
+                    myStoredHash = mdp; 
                 }
                 else
                 {
@@ -99,10 +117,26 @@ namespace MastercampProjectG139
 
                 verified = BCrypt.Net.BCrypt.Verify(txtPwd.Password + "^Y8~JJ", myStoredHash); //Hashing du mdp (avec le rajout du string) et comparaison avec celui de la bdd
 
-                if (verified == true) //Si bon mdp --> fenêtre login se ferme et autre fenêtre s'ouvre
+                if (verified == true) //Si bon mdp --> fenêtre login se ferme et autre fenêtre s'ouvre en se basant si c'est un médecin ou un pharmacien
                 {
-                    MainWindow dashboard = new MainWindow();
-                    dashboard.Show();
+                    string query2 = "SELECT idMedecin FROM Medecin WHERE idPS=@IdPS"; //On check si l'utilisateur qui se connecte est un médecin
+                    MySqlCommand mySqlCmd2 = new MySqlCommand(query2, connection);
+                    mySqlCmd2.CommandType = System.Data.CommandType.Text;
+                    mySqlCmd2.Parameters.AddWithValue("@IdPS", idPS);
+                    var mySqlResult = (int?)mySqlCmd2.ExecuteScalar(); //récupération d'un seul argument (ici l'ID du personnel soignant). L'argument peut être null si introuvable
+
+                    if(mySqlResult != null) //Si le résultat n'est pas null alors c'est un médecin
+                    {
+                        Medecin medecin = new Medecin(nom, prenom);
+                        MainWindow vueMedecin = new MainWindow(medecin);
+                        vueMedecin.Show();
+                    } else //Sinon c'est un pharmacien
+                    {
+                        Pharmacien pharmacien = new Pharmacien(nom, prenom);
+                        VuePharmacien vuePharmacien = new VuePharmacien(pharmacien);
+                        vuePharmacien.Show();
+                    }
+                    
                     this.Close();
                 }
                 else //Si mauvais mdp --> message d'erreur

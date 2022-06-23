@@ -10,13 +10,11 @@ namespace MastercampProjectG139
     {
         private string nom;
         private string prenom;
-        private int numSS;
 
-        public PersonnelSante(string nom, string prenom, int numSS)
+        public PersonnelSante(string nom, string prenom)
         {
             this.nom = nom;
             this.prenom = prenom;
-            this.numSS = numSS;
         }
 
         #region GETTERS
@@ -28,11 +26,6 @@ namespace MastercampProjectG139
         public string getPrenom()
         {
             return prenom;
-        }
-
-        public int getNumSS()
-        {
-            return numSS;
         }
         #endregion
     }

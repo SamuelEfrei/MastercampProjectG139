@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace MastercampProjectG139
 {
-    public class Medecin : PersonnelSante
+    public class Pharmacien : PersonnelSante
     {
-        public Medecin(string nom, string prenom) : base(nom, prenom)
+        public Pharmacien(string nom, string prenom) : base(nom, prenom)
         {
-            
         }
     }
 }

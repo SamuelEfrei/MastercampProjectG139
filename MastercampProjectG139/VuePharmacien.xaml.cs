@@ -19,9 +19,14 @@ namespace MastercampProjectG139
     /// </summary>
     public partial class VuePharmacien : Window
     {
-        public VuePharmacien()
+        private Pharmacien pharmacien;
+
+        public VuePharmacien() => InitializeComponent();
+
+        public VuePharmacien(Pharmacien pharmacien)
         {
             InitializeComponent();
+            this.pharmacien = pharmacien;
         }
     }
 }
