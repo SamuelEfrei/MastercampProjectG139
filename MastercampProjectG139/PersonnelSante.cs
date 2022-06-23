@@ -8,15 +8,30 @@ namespace MastercampProjectG139
 {
     internal class PersonnelSante
     {
-        private String nom;
-        private String prenom;
-        private int numSecuSociale;
+        private string nom;
+        private string prenom;
+        private int numSS;
 
-        public PersonnelSante(String nom, String prenom, int numSecuSociale)
+        public PersonnelSante(string nom, string prenom, int numSS)
         {
             this.nom = nom;
             this.prenom = prenom;
-            this.numSecuSociale = numSecuSociale;
+            this.numSS = numSS;
+        }
+
+        public string getNom()
+        {
+            return nom;
+        }
+
+        public string getPrenom()
+        {
+            return prenom;
+        }
+
+        public int getNumSS()
+        {
+            return numSS;
         }
     }
 }
