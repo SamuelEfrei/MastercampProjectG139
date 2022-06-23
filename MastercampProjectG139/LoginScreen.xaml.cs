@@ -123,7 +123,7 @@ namespace MastercampProjectG139
                     MySqlCommand mySqlCmd2 = new MySqlCommand(query2, connection);
                     mySqlCmd2.CommandType = System.Data.CommandType.Text;
                     mySqlCmd2.Parameters.AddWithValue("@IdPS", idPS);
-                    var mySqlResult = (int?)mySqlCmd2.ExecuteScalar(); //récupération d'un seul argument (ici l'ID du personnel soignant). L'argument peut être null si introuvable
+                    var mySqlResult = (string?)mySqlCmd2.ExecuteScalar(); //récupération d'un seul argument (ici l'ID du personnel soignant). L'argument peut être null si introuvable
 
                     if(mySqlResult != null) //Si le résultat n'est pas null alors c'est un médecin
                     {

@@ -28,6 +28,7 @@ namespace MastercampProjectG139
         {
             InitializeComponent();
             this.medecin = medecin;
+            txtBlock_nomPrenom.Text = medecin.getNom().ToUpper() + " " + medecin.getPrenom().ToUpper();
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
