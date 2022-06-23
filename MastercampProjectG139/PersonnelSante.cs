@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MastercampProjectG139
 {
-    internal class PersonnelSante
+    public class PersonnelSante
     {
         private string nom;
         private string prenom;
@@ -19,6 +19,7 @@ namespace MastercampProjectG139
             this.numSS = numSS;
         }
 
+        #region GETTERS
         public string getNom()
         {
             return nom;
@@ -33,5 +34,6 @@ namespace MastercampProjectG139
         {
             return numSS;
         }
+        #endregion
     }
 }

@@ -20,12 +20,18 @@ namespace MastercampProjectG139
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Medecin medecin;
+
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        
+        public MainWindow(Medecin medecin)
+        {
+            InitializeComponent();
+            this.medecin = medecin;
+        }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {

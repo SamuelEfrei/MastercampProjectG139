@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace MastercampProjectG139
 {
-    internal class Medecin : PersonnelSante
+    public class Medecin : PersonnelSante
     {
-        public Medecin(PersonnelSante ps) : base(ps.nom, ps.prenom, ps.numSecuSociale)
+        public Medecin(string nom, string prenom, int numSecuSociale) : base(nom, prenom, numSecuSociale)
         {
             
         }

@@ -107,7 +107,7 @@ namespace MastercampProjectG139
                 }
                 else //Si mauvais mdp --> message d'erreur
                 {
-                    MessageBox.Show("Username or Password is wrong");
+                    MessageBox.Show("Identifiant ou mot de passe incorrect");
                 }
             }
             catch (Exception ex)
