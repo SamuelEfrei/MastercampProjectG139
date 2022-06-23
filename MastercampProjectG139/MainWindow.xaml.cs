@@ -20,9 +20,15 @@ namespace MastercampProjectG139
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private Medecin medecin;
+
+        public MainWindow() => InitializeComponent();
+
+        public MainWindow(Medecin medecin)
         {
             InitializeComponent();
+            this.medecin = medecin;
+            txtBlock_nomPrenom.Text = medecin.getNom().ToUpper() + " " + medecin.getPrenom().ToUpper();
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
