@@ -8,11 +8,13 @@ namespace MastercampProjectG139
 {
     public class PersonnelSante
     {
+        private int idPS;
         private string nom;
         private string prenom;
 
-        public PersonnelSante(string nom, string prenom)
+        public PersonnelSante(int idPS, string nom, string prenom)
         {
+            this.idPS = idPS;
             this.nom = nom;
             this.prenom = prenom;
         }

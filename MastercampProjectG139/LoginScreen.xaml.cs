@@ -137,17 +137,24 @@ namespace MastercampProjectG139
                     MySqlCommand mySqlCmd2 = new MySqlCommand(query2, connection);
                     mySqlCmd2.CommandType = System.Data.CommandType.Text;
                     mySqlCmd2.Parameters.AddWithValue("@IdPS", idPS);
-                    var mySqlResult = (string?)mySqlCmd2.ExecuteScalar(); //récupération d'un seul argument (ici l'ID du personnel soignant). L'argument peut être null si introuvable
+                    var idMedecin = (string?)mySqlCmd2.ExecuteScalar(); //récupération d'un seul argument (ici l'ID du personnel soignant). L'argument peut être null si introuvable
 
-                    if (mySqlResult != null) //Si le résultat n'est pas null alors c'est un médecin
+                    if (idMedecin != null) //Si le résultat n'est pas null alors c'est un médecin
                     {
-                        Medecin medecin = new Medecin(nom, prenom);
+                        Medecin medecin = new Medecin(idPS, nom, prenom, Convert.ToInt32(idMedecin));
                         MainWindow vueMedecin = new MainWindow(medecin);
                         vueMedecin.Show();
                     }
                     else //Sinon c'est un pharmacien
                     {
-                        Pharmacien pharmacien = new Pharmacien(nom, prenom);
+                        //Et dans ce cas on récupère l'ID du pharmacien dans la table pharmacien
+                        string query3 = "SELECT idPharma FROM Pharmacien WHERE idPS=@IdPS";
+                        MySqlCommand mySqlCmd3 = new MySqlCommand(query3, connection);
+                        mySqlCmd3.CommandType = System.Data.CommandType.Text;
+                        mySqlCmd3.Parameters.AddWithValue("@IdPS", idPS);
+                        var idPharma = (string?)mySqlCmd3.ExecuteScalar();
+
+                        Pharmacien pharmacien = new Pharmacien(idPS, nom, prenom, Convert.ToInt32(idPharma));
                         VuePharmacien vuePharmacien = new VuePharmacien(pharmacien);
                         vuePharmacien.Show();
                     }

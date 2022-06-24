@@ -8,8 +8,11 @@ namespace MastercampProjectG139
 {
     public class Pharmacien : PersonnelSante
     {
-        public Pharmacien(string nom, string prenom) : base(nom, prenom)
+        private int idPharma;
+
+        public Pharmacien(int idPS, string nom, string prenom, int idPharma) : base(idPS, nom, prenom)
         {
+            this.idPharma = idPharma;
         }
     }
 }
