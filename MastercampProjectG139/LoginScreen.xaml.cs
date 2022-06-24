@@ -57,7 +57,21 @@ namespace MastercampProjectG139
             }
         }
 
-        private void BtnSubmit_Click(object sender, RoutedEventArgs e)  //Fonction pour passer de fenêtre login à autre fenêtre quand utilisateur clique sur "connexion"
+        private void BtnSubmit_Click(object sender, RoutedEventArgs e)  
+        {
+            loginUser();
+        }
+
+        private void login_EnterDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter && txtNumSecu.Text != "" && txtPwd.Password != null)
+            {
+                loginUser();
+            }
+        }
+
+        //Fonction pour passer de fenêtre login à autre fenêtre quand utilisateur clique sur "connexion" ou sur la touche Entrée
+        private void loginUser()
         {
             //Fonction pour modifier un mdp (suite)
             /*try
@@ -90,7 +104,7 @@ namespace MastercampProjectG139
                     connection.Open();  //Lancement de la connexion avec la base de données
                 string query = "SELECT idPS, nom, prenom, mdp FROM PersonnelSante WHERE numSSPersonnel=@Username"; //Requête SQL pour trouver le mdp correspondant à l'identifiant
                 MySqlCommand mySqlCmd = new MySqlCommand(query, connection);
-                
+
                 mySqlCmd.CommandType = System.Data.CommandType.Text;
                 mySqlCmd.Parameters.AddWithValue("@Username", txtNumSecu.Text); //Identifiant renseigné ici plutôt que dans requête SQL pour éviter injection SQL malveillante
                 //var mySqlResult = mySqlCmd.ExecuteScalar().ToString(); //Récupération du mdp hashé de la bdd en type string
@@ -108,7 +122,7 @@ namespace MastercampProjectG139
 
                 if (mdp != null)
                 {
-                    myStoredHash = mdp; 
+                    myStoredHash = mdp;
                 }
                 else
                 {
@@ -125,18 +139,19 @@ namespace MastercampProjectG139
                     mySqlCmd2.Parameters.AddWithValue("@IdPS", idPS);
                     var mySqlResult = (string?)mySqlCmd2.ExecuteScalar(); //récupération d'un seul argument (ici l'ID du personnel soignant). L'argument peut être null si introuvable
 
-                    if(mySqlResult != null) //Si le résultat n'est pas null alors c'est un médecin
+                    if (mySqlResult != null) //Si le résultat n'est pas null alors c'est un médecin
                     {
                         Medecin medecin = new Medecin(nom, prenom);
                         MainWindow vueMedecin = new MainWindow(medecin);
                         vueMedecin.Show();
-                    } else //Sinon c'est un pharmacien
+                    }
+                    else //Sinon c'est un pharmacien
                     {
                         Pharmacien pharmacien = new Pharmacien(nom, prenom);
                         VuePharmacien vuePharmacien = new VuePharmacien(pharmacien);
                         vuePharmacien.Show();
                     }
-                    
+
                     this.Close();
                 }
                 else //Si mauvais mdp --> message d'erreur
