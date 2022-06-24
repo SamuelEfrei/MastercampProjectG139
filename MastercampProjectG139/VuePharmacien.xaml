@@ -6,7 +6,8 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:MastercampProjectG139"
         mc:Ignorable="d"
-        Title="OrdOnline - Pharmacien" Height="450" Width="800">
+        Title="OrdOnline - Pharmacien" Height="475" Width="800">
+    
     <StackPanel Orientation="Vertical">
         <DockPanel>
             <Menu DockPanel.Dock="Top" Style="{x:Null}">
@@ -19,7 +20,6 @@
                 <MenuItem Header="_Aide" Style="{x:Null}" />
                 <MenuItem Header="A Propos" Style="{x:Null}" />
             </Menu>
-
         </DockPanel>
 
         <StackPanel x:Name="panelTop">
@@ -60,7 +60,5 @@
                 <Button x:Name="btn_updateOrdo" Content="Mettre à jour l'ordonnance" Grid.Column="1" Grid.Row="0" Width="auto" HorizontalAlignment="Right" />
             </Grid>
         </StackPanel>
-
     </StackPanel>
-
 </Window>
