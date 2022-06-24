@@ -28,5 +28,10 @@ namespace MastercampProjectG139
             InitializeComponent();
             this.pharmacien = pharmacien;
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }
