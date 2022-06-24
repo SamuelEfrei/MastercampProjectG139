@@ -27,6 +27,12 @@ namespace MastercampProjectG139
         {
             InitializeComponent();
             this.pharmacien = pharmacien;
+            txtBlock_nomPrenom.Text = pharmacien.getNom().ToUpper() + " " + pharmacien.getPrenom().ToUpper();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }
