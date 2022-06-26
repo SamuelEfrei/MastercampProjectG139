@@ -12,12 +12,12 @@
         
         Title="OrdOnline - Vue Médecin" Height="475" Width="800">
 
-    <Window.Resources>
+    <!--<Window.Resources>
         <DataTemplate x:Name="addMedTemplate" DataType="{x:Type viewmodels:AddMedModel}">
             <views:AddMed DataContext="{Binding}"/>
         </DataTemplate>
-    </Window.Resources>
-   
+    </Window.Resources>-->
+
     <StackPanel Orientation="Vertical">
         <DockPanel>
             <Menu DockPanel.Dock="Top" Style="{x:Null}">
@@ -31,9 +31,9 @@
                 <MenuItem Header="A Propos" Style="{x:Null}" />
             </Menu>
         </DockPanel>
- 
+
         <StackPanel x:Name="panelTop">
-            <Grid x:Name="leftGrid_panelTop" Height="100">
+            <Grid x:Name="leftGrid_panelTop" Height="226">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
@@ -42,61 +42,65 @@
                     <RowDefinition Height="3*" />
                     <RowDefinition Height="2*" />
                 </Grid.RowDefinitions>
-                <TextBlock Text="Ajouter une ordonnance" Margin="10 0 0 0" VerticalAlignment="Center" FontWeight="Bold" FontSize="28" Grid.Column="0" Grid.Row="0" />
-                <Button x:Name="btn_addMedicament" Click="BtnAdd_Click" Content="Ajouter un autre médicament" HorizontalAlignment="Left" Margin="10 0 0 0" Grid.Column="0" Grid.Row="1" Width="auto" />
+
+                <TextBlock Text="Ajouter une ordonnance" Margin="10,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="28" Grid.Column="0" Grid.Row="0" />
+                <views:AddMed DataContext="{Binding CurrentViewModel}" Grid.ColumnSpan="2" Margin="10,52,95,90" Grid.RowSpan="2"/>
+                <!--<Button x:Name="btn_addMedicament" Click="BtnAdd_Click" Content="Ajouter un autre médicament" HorizontalAlignment="Left" Margin="10 0 0 0" Grid.Column="0" Grid.Row="1" Width="auto" />-->
                 <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Vertical"  HorizontalAlignment="Right" Margin="0 0 10 0" VerticalAlignment="Center">
-                    <TextBlock x:Name="txtBlock_nomPrenom" TextAlignment="Right" FontSize="15" FontStyle="Italic" Text="NOM Prénom" />
                     <TextBlock Text="Médecin" FontSize="15" TextAlignment="Right" FontWeight="DemiBold" FontStyle="Italic" />
                 </StackPanel>
+                <TextBlock x:Name="txtBlock_nomPrenom" TextAlignment="Right" FontSize="15" FontStyle="Italic" Text="NOM Prénom" Grid.Column="1" Margin="300,21,10,95" />
             </Grid>
         </StackPanel>
-        
+        <views:MedList DataContext="{Binding CurrentViewModel}"/>
+
         <StackPanel Margin="0 10 0 0" x:Name="panelMiddle" Background="LightGray" Height="250">
-          
 
-                <StackPanel x:Name="panel_medic1">
 
-                   
-                        
-                            <Grid x:Name="grid_medic1" Margin="10 0 10 0">
-                            
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-                             
-                           
-                            <TextBlock Text="Médicament 1" Grid.Row="0" FontSize="20" FontWeight="Bold" />
-                          
-                                 <Grid Grid.Row="1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="2*" />
-                                </Grid.ColumnDefinitions>
-                                <TextBox x:Name="medicSearch" Grid.Column="0" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Médicament" Cursor="Arrow" />
-                                <ComboBox Grid.Column="1" VerticalAlignment="Center" Width="100">
-                                    <ComboBoxItem>Chaque midi</ComboBoxItem>
-                                    <ComboBoxItem>2 fois par jour</ComboBoxItem>
-                                    <ComboBoxItem IsSelected="True">3 fois par jour</ComboBoxItem>
-                                </ComboBox>
-                                <TextBox x:Name="txtBox_dureeTraitement" Width="100" Grid.Column="2" materialDesign:HintAssist.Hint="Combien de jours ?" VerticalAlignment="Center" Cursor="Arrow"/>
-                                <CheckBox x:Name="checkbox_appelerMedecin" Content="Besoin d'appeler le médecin" Grid.Column="3" VerticalAlignment="Center" />
-                            </Grid>
-                        </Grid>
-                
-            
+            <StackPanel x:Name="panel_medic1">
+
+
+                <Grid x:Name="grid_medic1" Margin="10 0 10 0">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+
+                    <TextBlock Text="Médicament" Grid.Row="0" FontSize="20" FontWeight="Bold" />
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="medicSearch" Grid.Column="0" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Médicament" Cursor="Arrow" />
+                        <ComboBox Grid.Column="1" VerticalAlignment="Center" Width="100">
+                            <ComboBoxItem>Chaque midi</ComboBoxItem>
+                            <ComboBoxItem>2 fois par jour</ComboBoxItem>
+                            <ComboBoxItem IsSelected="True">3 fois par jour</ComboBoxItem>
+                        </ComboBox>
+                        <TextBox x:Name="txtBox_dureeTraitement" Width="100" Grid.Column="2" materialDesign:HintAssist.Hint="Combien de jours ?" VerticalAlignment="Center" Cursor="Arrow"/>
+                        <CheckBox x:Name="checkbox_appelerMedecin" Content="Besoin d'appeler le médecin" Grid.Column="3" VerticalAlignment="Center" />
+                    </Grid>
+                </Grid>
+
+
+
+
+
+            </StackPanel>
+
+
 
         </StackPanel>
-         
 
-            
-        </StackPanel>
-        
         <StackPanel x:Name="panelBottom" VerticalAlignment="Bottom" Orientation="Vertical" HorizontalAlignment="Stretch">
             <Grid Height="65" Margin="10 0 10 0">
                 <Grid.ColumnDefinitions>
@@ -108,6 +112,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition />
                 </Grid.RowDefinitions>
+
                 <Button x:Name="btn_logOut" Background="IndianRed" Content="Se déconnecter" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="0" Width="auto" />
                 <TextBox x:Name="txtBox_mailPatient" Grid.Column="1" materialDesign:HintAssist.Hint="Adresse mail du patient" Width="130" VerticalAlignment="Center" HorizontalAlignment="Right" />
                 <TextBox x:Name="txtBox_numSSPatient" Grid.Column="2" materialDesign:HintAssist.Hint="Numéro de sécurité sociale du patient" Width="210" VerticalAlignment="Center" />
@@ -115,5 +120,5 @@
             </Grid>
         </StackPanel>
     </StackPanel>
-    
+
 </Window>

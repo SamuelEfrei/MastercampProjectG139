@@ -35,16 +35,18 @@ namespace MastercampProjectG139
 
        
 
-        private void BtnAdd_Click(object sender, RoutedEventArgs e)
-        {
+        //private void BtnAdd_Click(object sender, RoutedEventArgs e)
+        //{
            
             
-            ContentControl contentControl = new ContentControl();
+        //    ContentControl contentControl = new ContentControl();
          
-            contentControl.Content = new AddMedModel();
-            panelMiddle.Children.Add(contentControl);
+        //  //contentControl.DataContext = new AddMedModel();
+        //    contentControl.Content = new AddMedModel();
+               
+        //   panelMiddle.Children.Add(contentControl);
            
-        }
+        //}
       
 
         
