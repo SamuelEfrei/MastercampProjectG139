@@ -1,4 +1,5 @@
 ﻿using MastercampProjectG139.Models;
+using MastercampProjectG139.Stores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +10,24 @@ namespace MastercampProjectG139.ViewModels
 {
     internal class MainViewModel : ViewModelBase
     {
-        public ViewModelBase CurrentViewModel { get; }
+        
 
+        private readonly NavigationStore _navigationStore;
 
-        public MainViewModel(Ordonnance ordonnance)
+        
+
+        public ViewModelBase ListViewModel { get; }
+        public MedListModel MedList { get; }
+        public ViewModelBase CurrentViewModel => _navigationStore.CurrentViewModel;
+        public MainViewModel(NavigationStore navigationStore)
         {
-            //CurrentViewModel = new MedListModel();
-            CurrentViewModel = new AddMedViewModel(ordonnance);
+            _navigationStore = navigationStore;
+            _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
+        }
+
+        private void OnCurrentViewModelChanged()
+        {
+            OnPropertyChanged(nameof(CurrentViewModel));
         }
     }
 }

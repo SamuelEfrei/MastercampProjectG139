@@ -1,5 +1,7 @@
 ﻿using MastercampProjectG139.Commands;
 using MastercampProjectG139.Models;
+using MastercampProjectG139.Services;
+using MastercampProjectG139.Stores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,25 +13,55 @@ namespace MastercampProjectG139.ViewModels
 {
     internal class AddMedViewModel : ViewModelBase
     {
-        private string _medoc;
-        public string Medoc
+        private string _name;
+        public string Name
         {
             get 
             {
-                return _medoc;
+                return _name;
             }
             set 
             { 
-                _medoc = value; 
-                OnPropertyChanged(nameof(Medoc));
+                _name = value; 
+                OnPropertyChanged(nameof(Name));
+            }
+        }
+
+        private string _frequence;
+        public string Frequence
+        {
+            get
+            {
+                return _frequence;
+            }
+            set
+            {
+                _frequence = value;
+                OnPropertyChanged(nameof(_frequence));
+            }
+        }
+
+        private string _duration;
+        public string Duration
+        {
+            get
+            {
+                return _duration;
+            }
+            set
+            {
+                _duration = value;
+                OnPropertyChanged(nameof(Duration));
             }
         }
 
         public ICommand SubmitCommand { get;}
-
-        public AddMedViewModel(Ordonnance ordonnance)
+        public ICommand CancelCommand { get;}
+      
+        public AddMedViewModel(Ordonnance ordonnance, NavigationService medicamentViewNavigationService)
         {
-            SubmitCommand = new AddMedCommand(this, ordonnance);
+            SubmitCommand = new AddMedCommand(this, ordonnance, medicamentViewNavigationService);
+            CancelCommand = new NavigateCommand(medicamentViewNavigationService); ;
         }
     }
 }

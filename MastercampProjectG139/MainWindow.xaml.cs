@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MastercampProjectG139.Models;
 using MastercampProjectG139.ViewModels;
 
 namespace MastercampProjectG139
@@ -21,11 +22,14 @@ namespace MastercampProjectG139
     /// </summary>
     public partial class MainWindow : Window
     {
-       
+  
+        
         public MainWindow()
         {
             InitializeComponent();
-          
+            
+
+
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)

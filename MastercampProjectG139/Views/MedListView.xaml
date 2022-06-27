@@ -6,8 +6,17 @@
              xmlns:local="clr-namespace:MastercampProjectG139.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    
+    
     <Grid>
-        <ListView ItemsSource="{Binding Medicaments}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+        <StackPanel >
+        <Button  Grid.Row="1" Command="{Binding AddMedCommand}" Content="Ajouter un autre médicament" Cursor="Hand"/>
+        </StackPanel>
+        <ListView ItemsSource="{Binding Medicaments}" Grid.Row="2">
             
             <ListView.View>
                 <GridView>
@@ -23,14 +32,18 @@
                     <GridViewColumn >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="Fréquence"/>
+                                <TextBlock 
+                                    
+                                    Text="{Binding Frequence}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="Durée du traitement"/>
+                                <TextBlock 
+                                    
+                                    Text="{Binding Duration}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

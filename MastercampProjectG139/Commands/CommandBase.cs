@@ -18,7 +18,7 @@ namespace MastercampProjectG139.Commands
 
         public abstract void Execute(object parameter);
 
-        protected void OnCanExectedChanged()
+        protected void OnCanExecutedChanged()
         {
             CanExecuteChanged?.Invoke(this, EventArgs.Empty);
         }

@@ -35,18 +35,20 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="2*" />
                     </Grid.ColumnDefinitions>
-                    <TextBox x:Name="medicSearch" Grid.Column="0" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Médicament" Cursor="Arrow" Text="{Binding Medoc, UpdateSourceTrigger=PropertyChanged}"/>
-                    <ComboBox Grid.Column="1" VerticalAlignment="Center" Width="100" >
+                    <TextBox x:Name="medicSearch" Grid.Column="0" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Médicament" Cursor="Arrow" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox  Grid.Column="1" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Quantité" Cursor="Arrow" Text="{Binding Frequence, UpdateSourceTrigger=PropertyChanged}"/>
+                    <!--<ComboBox Grid.Column="1" VerticalAlignment="Center" Width="100" >
                         <ComboBoxItem>Chaque midi</ComboBoxItem>
                         <ComboBoxItem>2 fois par jour</ComboBoxItem>
                         <ComboBoxItem IsSelected="True">3 fois par jour</ComboBoxItem>
-                    </ComboBox>
-                    <TextBox x:Name="txtBox_dureeTraitement" Width="100" Grid.Column="2" materialDesign:HintAssist.Hint="Combien de jours ?" VerticalAlignment="Center" Cursor="Arrow"/>
+                    </ComboBox>-->
+                    <TextBox x:Name="txtBox_dureeTraitement" Width="100" Grid.Column="2" materialDesign:HintAssist.Hint="Combien de jours ?" VerticalAlignment="Center" Cursor="Arrow" Text="{Binding Duration, UpdateSourceTrigger=PropertyChanged}"/>
                     <CheckBox x:Name="checkbox_appelerMedecin" Content="Besoin d'appeler le médecin" Grid.Column="3" VerticalAlignment="Center" />
                 </Grid>
                 <StackPanel Grid.Row="3"
                             Margin="10 10 10 0">
                     <Button Command="{Binding SubmitCommand}" Content="Ajouter Médicament" Cursor="Hand"/>
+                    <Button Command="{Binding CancelCommand}" Content="Annuler" Cursor="Hand"/>
                 </StackPanel>
             </Grid>
 
