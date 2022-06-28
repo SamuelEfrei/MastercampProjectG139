@@ -12,7 +12,9 @@ namespace MastercampProjectG139
 
         public Pharmacien(int idPS, string nom, string prenom, int idPharma) : base(idPS, nom, prenom)
         {
-            this.idPharma = idPharma;
+            this.IdPharma = idPharma;
         }
+
+        public int IdPharma { get => idPharma; set => idPharma = value; }
     }
 }
