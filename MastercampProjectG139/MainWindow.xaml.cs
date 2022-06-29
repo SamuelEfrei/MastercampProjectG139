@@ -51,6 +51,14 @@ namespace MastercampProjectG139
             Application.Current.Shutdown();
         }
 
+        private void pdfratio(object sender, RoutedEventArgs e)
+        {
+            PDF ratio = new PDF();
+            ratio.GeneratePDF();
+            Application.Current.Shutdown();
+        }
+
+
         private AddMedViewModel CreateAddMedViewModel()
         {
             return new AddMedViewModel(_ordonnance, new Services.NavigationService(_navigationStore, CreateMedicamentViewModel));
@@ -60,6 +68,8 @@ namespace MastercampProjectG139
         {
             return new MedListModel(_ordonnance, new Services.NavigationService(_navigationStore, CreateAddMedViewModel));
         }
+
+
 
        
 
