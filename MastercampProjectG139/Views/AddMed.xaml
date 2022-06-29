@@ -51,7 +51,7 @@
 
                         </Grid.ColumnDefinitions>
                         <Button Grid.Column="0" Command="{Binding SubmitCommand}" Content="Ajouter Médicament" Cursor="Hand" Margin="30 10 30 0"/>
-                        <Button Grid.Column="1" Command="{Binding CancelCommand}" Content="Annuler" Cursor="Hand" Margin="30 10 30 0"/>
+                        <Button Grid.Column="1" Command="{Binding CancelCommand}" Content="Annuler" Cursor="Hand" Margin="30 10 30 0" Background="IndianRed" BorderBrush="IndianRed"/>
                     
                     </Grid>
                 </StackPanel>
