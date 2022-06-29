@@ -17,7 +17,8 @@
             <Grid x:Name="grid_medic1" Margin="10 0 10 0">
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
+                    <ColumnDefinition Width="*"/>
+                    
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -36,54 +37,29 @@
                         <ColumnDefinition Width="2*" />
                     </Grid.ColumnDefinitions>
                     <TextBox x:Name="medicSearch" Grid.Column="0" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Médicament" Cursor="Arrow" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBox  Grid.Column="1" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Quantité" Cursor="Arrow" Text="{Binding Frequence, UpdateSourceTrigger=PropertyChanged}"/>
-                    <!--<ComboBox Grid.Column="1" VerticalAlignment="Center" Width="100" >
-                        <ComboBoxItem>Chaque midi</ComboBoxItem>
-                        <ComboBoxItem>2 fois par jour</ComboBoxItem>
-                        <ComboBoxItem IsSelected="True">3 fois par jour</ComboBoxItem>
-                    </ComboBox>-->
+                    <TextBox  Grid.Column="1" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Quantité" Cursor="Arrow" Text="{Binding Frequence, UpdateSourceTrigger=PropertyChanged}" Margin="10 0 10 0" />
+                    
                     <TextBox x:Name="txtBox_dureeTraitement" Width="100" Grid.Column="2" materialDesign:HintAssist.Hint="Combien de jours ?" VerticalAlignment="Center" Cursor="Arrow" Text="{Binding Duration, UpdateSourceTrigger=PropertyChanged}"/>
                     <CheckBox x:Name="checkbox_appelerMedecin" Content="Besoin d'appeler le médecin" Grid.Column="3" VerticalAlignment="Center" />
                 </Grid>
                 <StackPanel Grid.Row="3"
                             Margin="10 10 10 0">
-                    <Button Command="{Binding SubmitCommand}" Content="Ajouter Médicament" Cursor="Hand"/>
-                    <Button Command="{Binding CancelCommand}" Content="Annuler" Cursor="Hand"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Command="{Binding SubmitCommand}" Content="Ajouter Médicament" Cursor="Hand" Margin="30 10 30 0"/>
+                        <Button Grid.Column="1" Command="{Binding CancelCommand}" Content="Annuler" Cursor="Hand" Margin="30 10 30 0"/>
+                    
+                    </Grid>
                 </StackPanel>
             </Grid>
 
         </StackPanel>
         
-        <!--<ListView>
-            <ListViewItem/>
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn >
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBox 
-                                    
-                                    Text="{Binding Medoc}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn >
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBox Text="Fréquence"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn >
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBox Text="Durée du traitement"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>-->
+       
 
     </Grid>
 </UserControl>

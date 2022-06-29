@@ -12,7 +12,7 @@ namespace MastercampProjectG139.Services
     {
         private readonly NavigationStore _navigationStore;
         private readonly Func<ViewModelBase> _createViewModel;
-
+        //Modèle de base qui permet de call les différentes vues
         public NavigationService(NavigationStore navigationStore, Func<ViewModelBase> createViewModel)
         {
             _navigationStore = navigationStore;

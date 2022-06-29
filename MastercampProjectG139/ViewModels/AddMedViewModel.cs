@@ -54,10 +54,11 @@ namespace MastercampProjectG139.ViewModels
                 OnPropertyChanged(nameof(Duration));
             }
         }
-
+        //Déclaration des méthodes
         public ICommand SubmitCommand { get;}
         public ICommand CancelCommand { get;}
-      
+        
+        //Le constructeur est appelé lorsqu'on appuie sur le bouton "annuler" ou "ajouter"
         public AddMedViewModel(Ordonnance ordonnance, NavigationService medicamentViewNavigationService)
         {
             SubmitCommand = new AddMedCommand(this, ordonnance, medicamentViewNavigationService);

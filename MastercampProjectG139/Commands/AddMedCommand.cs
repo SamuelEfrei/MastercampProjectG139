@@ -22,6 +22,7 @@ namespace MastercampProjectG139.Commands
             _addMedViewModel = addMedViewModel;
             _ordonnance = ordonnance;
             _medicamentViewNavigationService = medicamentViewNavigationService;
+            //Update le changement de variable
             _addMedViewModel.PropertyChanged += OnViewModelPropertyChanged;
         }
 
@@ -45,10 +46,10 @@ namespace MastercampProjectG139.Commands
             Medicament medicament = new Medicament(_addMedViewModel.Name, _addMedViewModel.Frequence, _addMedViewModel.Duration);
             try
             {
-                
+                //Le nouveau "medicament" est ajouté à la liste "_ordonnance"
                 _ordonnance.AddMed(medicament);
               
-    
+                //Supprimer la MessageBox si jamais cela vous gêne durant les tests
                 MessageBox.Show("Le médicament a été ajouté", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 _medicamentViewNavigationService.Navigate();
 

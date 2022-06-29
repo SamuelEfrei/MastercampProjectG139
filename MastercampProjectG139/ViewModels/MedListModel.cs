@@ -18,16 +18,15 @@ namespace MastercampProjectG139.ViewModels
         private readonly ObservableCollection<MedicamentViewModel>  _medicaments;
         public IEnumerable<MedicamentViewModel> Medicaments => _medicaments;
         public ICommand AddMedCommand { get; }
-       // public ICommand LoadMedicamentsCommand { get;}
+       //Le constructeur est load a chaque fois que le fenêtre revient sur MedList
         public MedListModel(Ordonnance ordonnance, NavigationService addMedNavigationService)
         {
             _ordonnance = ordonnance;
             _medicaments = new ObservableCollection<MedicamentViewModel>();
 
             AddMedCommand = new NavigateCommand(addMedNavigationService);
-            //_medicaments.Add(new MedicamentViewModel(new Medicament("oui", "i", "o")));
-            //_medicaments.Add(new MedicamentViewModel(new Medicament("oui", "i", "o")));
-
+          
+            
             UpdateMedicaments();
 
         }

@@ -52,18 +52,7 @@ namespace MastercampProjectG139
             return new MedListModel(_ordonnance, new Services.NavigationService(_navigationStore, CreateAddMedViewModel));
         }
 
-        //private void BtnAdd_Click(object sender, RoutedEventArgs e)
-        //{
-
-
-        //    ContentControl contentControl = new ContentControl();
-
-        //  //contentControl.DataContext = new AddMedModel();
-        //    contentControl.Content = new AddMedModel();
-
-        //   panelMiddle.Children.Add(contentControl);
-
-        //}
+       
 
 
 

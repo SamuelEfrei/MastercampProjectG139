@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace MastercampProjectG139.ViewModels
 {
+    //Permet de détecter le changement de propriété
     internal class ViewModelBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;

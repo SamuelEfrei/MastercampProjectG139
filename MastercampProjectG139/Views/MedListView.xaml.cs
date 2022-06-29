@@ -24,5 +24,13 @@ namespace MastercampProjectG139.Views
         {
             InitializeComponent();
         }
+
+
+     
+        private void FileListScroller_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            FileListScroller.ScrollToVerticalOffset(FileListScroller.VerticalOffset - e.Delta);
+            e.Handled = true;
+        }
     }
 }

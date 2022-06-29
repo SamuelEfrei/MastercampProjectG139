@@ -10,7 +10,7 @@ namespace MastercampProjectG139.ViewModels
 {
     internal class MainViewModel : ViewModelBase
     {
-        
+        //Génération des variables pour changer de vue
         private readonly NavigationStore _navigationStore;
         public ViewModelBase CurrentViewModel => _navigationStore.CurrentViewModel;
         public MainViewModel(NavigationStore navigationStore)
