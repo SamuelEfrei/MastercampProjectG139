@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="MastercampProjectG139.Views.AddMed"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MastercampProjectG139.Views"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="450" d:DesignWidth="800">
+            
+    <Grid>
+        
+        <StackPanel >
+
+
+
+            <Grid x:Name="grid_medic1" Margin="10 0 10 0">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+
+                <TextBlock Text="Médicament" Grid.Row="0" FontSize="20" FontWeight="Bold" />
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="medicSearch" Grid.Column="0" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Médicament" Cursor="Arrow" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox  Grid.Column="1" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Quantité" Cursor="Arrow" Text="{Binding Frequence, UpdateSourceTrigger=PropertyChanged}" Margin="10 0 10 0" />
+                    
+                    <TextBox x:Name="txtBox_dureeTraitement" Width="100" Grid.Column="2" materialDesign:HintAssist.Hint="Combien de jours ?" VerticalAlignment="Center" Cursor="Arrow" Text="{Binding Duration, UpdateSourceTrigger=PropertyChanged}"/>
+                    <CheckBox x:Name="checkbox_appelerMedecin" Content="Besoin d'appeler le médecin" Grid.Column="3" VerticalAlignment="Center" />
+                </Grid>
+                <StackPanel Grid.Row="3"
+                            Margin="10 10 10 0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Command="{Binding SubmitCommand}" Content="Ajouter Médicament" Cursor="Hand" Margin="30 10 30 0"/>
+                        <Button Grid.Column="1" Command="{Binding CancelCommand}" Content="Annuler" Cursor="Hand" Margin="30 10 30 0"/>
+                    
+                    </Grid>
+                </StackPanel>
+            </Grid>
+
+        </StackPanel>
+        
+       
+
+    </Grid>
+</UserControl>

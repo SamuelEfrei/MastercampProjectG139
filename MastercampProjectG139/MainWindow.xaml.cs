@@ -12,6 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MastercampProjectG139.Models;
+using MastercampProjectG139.Stores;
+using MastercampProjectG139.ViewModels;
+using MastercampProjectG139.Services;
 
 namespace MastercampProjectG139
 {
@@ -20,6 +24,9 @@ namespace MastercampProjectG139
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        private readonly Ordonnance _ordonnance;
+        private readonly NavigationStore _navigationStore;
         private Medecin medecin;
 
         public MainWindow() => InitializeComponent();
@@ -29,11 +36,33 @@ namespace MastercampProjectG139
             InitializeComponent();
             this.medecin = medecin;
             txtBlock_nomPrenom.Text = medecin.getNom().ToUpper() + " " + medecin.getPrenom().ToUpper();
+            
+            _ordonnance = new Ordonnance("Ordonnance");
+            _navigationStore = new NavigationStore();
+            _navigationStore.CurrentViewModel = CreateMedicamentViewModel();
+            DataContext = new MainViewModel(_navigationStore);
+
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
+
+        private AddMedViewModel CreateAddMedViewModel()
+        {
+            return new AddMedViewModel(_ordonnance, new Services.NavigationService(_navigationStore, CreateMedicamentViewModel));
+        }
+
+        private MedListModel CreateMedicamentViewModel()
+        {
+            return new MedListModel(_ordonnance, new Services.NavigationService(_navigationStore, CreateAddMedViewModel));
+        }
+
+       
+
+
+
+
     }
 }
