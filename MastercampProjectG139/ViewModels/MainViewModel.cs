@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MastercampProjectG139.ViewModels
 {
-    internal class MainViewModel : ViewModelBase
+    class MainViewModel : ViewModelBase
     {
         //Génération des variables pour changer de vue
         private readonly NavigationStore _navigationStore;

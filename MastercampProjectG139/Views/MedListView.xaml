@@ -14,7 +14,7 @@
             <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
         <StackPanel >
-            <Button  Grid.Row="0" Command="{Binding AddMedCommand}" Content="Ajouter un autre médicament" Cursor="Hand" Margin="200 10 200 0"/>
+            <Button  Grid.Row="0" Command="{Binding AddMedCommand}" Content="Ajouter un autre médicament" Cursor="Hand" Margin="200 10 200 0" Width="350"/>
         </StackPanel>
         <ScrollViewer Grid.Row="1" CanContentScroll="False" PreviewMouseWheel="FileListScroller_PreviewMouseWheel" VerticalScrollBarVisibility="Disabled" x:Name="FileListScroller">
             <ListView ItemsSource="{Binding Medicaments}" Grid.Row="1">

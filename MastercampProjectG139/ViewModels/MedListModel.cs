@@ -12,7 +12,7 @@ using System.Windows.Input;
 
 namespace MastercampProjectG139.ViewModels
 {
-    internal class MedListModel : ViewModelBase
+    class MedListModel : ViewModelBase
     {
         private readonly ModelOrdonnance _ordonnance;
         private readonly ObservableCollection<MedicamentViewModel>  _medicaments;

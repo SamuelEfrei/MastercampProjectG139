@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace MastercampProjectG139.ViewModels
 {
     //Afin d'éviter un problème de mémoire on refait un modelview medicament en prenant modèle sur Medicament
-    internal class MedicamentViewModel: ViewModelBase
+    class MedicamentViewModel: ViewModelBase
     {
         private readonly ModelMedicament _ordonnance;
         public string Name => _ordonnance.Name.ToString();

@@ -11,7 +11,7 @@ using System.Windows.Input;
 
 namespace MastercampProjectG139.ViewModels
 {
-    internal class AddMedViewModel : ViewModelBase
+    class AddMedViewModel : ViewModelBase
     {
         private string _name;
         public string Name

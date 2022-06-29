@@ -44,11 +44,11 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Text="Ajouter une ordonnance" Margin="10,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="28" Grid.Column="0" Grid.Row="0" />
-              
-                <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical"  HorizontalAlignment="Right" Margin="0 0 10 0" VerticalAlignment="Center">
+
+                <TextBlock x:Name="txtBlock_nomPrenom" TextAlignment="Right" VerticalAlignment="Bottom" FontSize="15" Margin="0 0 10 0" FontStyle="Italic" Text="NOM Prénom" Grid.Column="1" Grid.Row="0" />
+                <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical"  HorizontalAlignment="Right" Margin="0 0 10 0" VerticalAlignment="Top">
                     <TextBlock Text="Médecin" FontSize="15" TextAlignment="Right" FontWeight="DemiBold" FontStyle="Italic" />
                 </StackPanel>
-                <TextBlock x:Name="txtBlock_nomPrenom" TextAlignment="Right" FontSize="15" FontStyle="Italic" Text="NOM Prénom" Grid.Column="1" Margin="300,25,0,4" />
             </Grid>
         </StackPanel>
        
@@ -125,7 +125,7 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
 
-                <Button x:Name="btn_logOut" Background="IndianRed" Content="Se déconnecter" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="0" Width="auto" />
+                <Button x:Name="btn_logOut" Background="IndianRed" Content="Se déconnecter" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="0" Width="auto" BorderBrush="IndianRed" />
                 <TextBox x:Name="txtBox_mailPatient" Grid.Column="1" materialDesign:HintAssist.Hint="Adresse mail du patient" Width="130" VerticalAlignment="Center" HorizontalAlignment="Right" />
                 <TextBox x:Name="txtBox_numSSPatient" Grid.Column="2" materialDesign:HintAssist.Hint="Numéro de sécurité sociale du patient" Width="210" VerticalAlignment="Center" />
                 <Button x:Name="btn_validate" Content="Valider" Grid.Column="3" Grid.Row="0" Width="auto" />
