@@ -26,6 +26,7 @@ namespace MastercampProjectG139
     {
 
         private readonly ModelOrdonnance _ordonnance;
+        private readonly MedList medList;
         private readonly NavigationStore _navigationStore;
         private Medecin medecin;
 
@@ -54,7 +55,7 @@ namespace MastercampProjectG139
         private void pdfratio(object sender, RoutedEventArgs e)
         {
             PDF ratio = new PDF();
-            ratio.GeneratePDF();
+            ratio.GeneratePDF(medecin, _ordonnance);
             Application.Current.Shutdown();
         }
 
