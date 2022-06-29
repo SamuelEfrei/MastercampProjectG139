@@ -14,10 +14,10 @@ namespace MastercampProjectG139.Commands
     internal class AddMedCommand : CommandBase
     {
         private readonly AddMedViewModel _addMedViewModel;
-        private readonly Ordonnance _ordonnance;
+        private readonly ModelOrdonnance _ordonnance;
         private readonly NavigationService _medicamentViewNavigationService;
 
-        public AddMedCommand(AddMedViewModel addMedViewModel, Ordonnance ordonnance, NavigationService medicamentViewNavigationService)
+        public AddMedCommand(AddMedViewModel addMedViewModel, ModelOrdonnance ordonnance, NavigationService medicamentViewNavigationService)
         {
             _addMedViewModel = addMedViewModel;
             _ordonnance = ordonnance;
@@ -43,7 +43,7 @@ namespace MastercampProjectG139.Commands
         public override void Execute(object parameter)
         {
             
-            Medicament medicament = new Medicament(_addMedViewModel.Name, _addMedViewModel.Frequence, _addMedViewModel.Duration);
+            ModelMedicament medicament = new ModelMedicament(_addMedViewModel.Name, _addMedViewModel.Frequence, _addMedViewModel.Duration);
             try
             {
                 //Le nouveau "medicament" est ajouté à la liste "_ordonnance"

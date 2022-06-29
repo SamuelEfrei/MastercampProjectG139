@@ -25,7 +25,7 @@ namespace MastercampProjectG139
     public partial class MainWindow : Window
     {
 
-        private readonly Ordonnance _ordonnance;
+        private readonly ModelOrdonnance _ordonnance;
         private readonly NavigationStore _navigationStore;
         private Medecin medecin;
 
@@ -34,13 +34,15 @@ namespace MastercampProjectG139
         public MainWindow(Medecin medecin)
         {
             InitializeComponent();
-            this.medecin = medecin;
-            txtBlock_nomPrenom.Text = medecin.getNom().ToUpper() + " " + medecin.getPrenom().ToUpper();
-            
-            _ordonnance = new Ordonnance("Ordonnance");
+            _ordonnance = new ModelOrdonnance("Ordonnance");
             _navigationStore = new NavigationStore();
             _navigationStore.CurrentViewModel = CreateMedicamentViewModel();
             DataContext = new MainViewModel(_navigationStore);
+
+            this.medecin = medecin;
+            txtBlock_nomPrenom.Text = medecin.getNom().ToUpper() + " " + medecin.getPrenom().ToUpper();
+            
+            
 
         }
 

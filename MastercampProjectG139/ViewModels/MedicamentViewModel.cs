@@ -10,13 +10,13 @@ namespace MastercampProjectG139.ViewModels
     //Afin d'éviter un problème de mémoire on refait un modelview medicament en prenant modèle sur Medicament
     internal class MedicamentViewModel: ViewModelBase
     {
-        private readonly Medicament _ordonnance;
+        private readonly ModelMedicament _ordonnance;
         public string Name => _ordonnance.Name.ToString();
         public string Frequence => _ordonnance.Frequence.ToString();
 
         public string Duration => _ordonnance.Duration.ToString();
 
-        public MedicamentViewModel(Medicament ordonnance)
+        public MedicamentViewModel(ModelMedicament ordonnance)
         {
             _ordonnance = ordonnance;
             

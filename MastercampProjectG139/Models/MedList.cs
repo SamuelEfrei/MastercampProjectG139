@@ -8,19 +8,19 @@ namespace MastercampProjectG139.Models
 {
     internal class MedList
     {
-        private readonly List<Medicament> _medicaments;
+        private readonly List<ModelMedicament> _medicaments;
 
         public MedList()
         {
-            _medicaments = new List<Medicament>();
+            _medicaments = new List<ModelMedicament>();
         }
 
-        public IEnumerable<Medicament> GetAllMedicaments()
+        public IEnumerable<ModelMedicament> GetAllMedicaments()
         {
             return _medicaments;
         }
 
-        public void AddMedicament(Medicament medicament)
+        public void AddMedicament(ModelMedicament medicament)
         {
             _medicaments.Add(medicament);
         }

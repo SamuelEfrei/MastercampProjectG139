@@ -14,12 +14,12 @@ namespace MastercampProjectG139.ViewModels
 {
     internal class MedListModel : ViewModelBase
     {
-        private readonly Ordonnance _ordonnance;
+        private readonly ModelOrdonnance _ordonnance;
         private readonly ObservableCollection<MedicamentViewModel>  _medicaments;
         public IEnumerable<MedicamentViewModel> Medicaments => _medicaments;
         public ICommand AddMedCommand { get; }
        //Le constructeur est load a chaque fois que le fenêtre revient sur MedList
-        public MedListModel(Ordonnance ordonnance, NavigationService addMedNavigationService)
+        public MedListModel(ModelOrdonnance ordonnance, NavigationService addMedNavigationService)
         {
             _ordonnance = ordonnance;
             _medicaments = new ObservableCollection<MedicamentViewModel>();
@@ -35,7 +35,7 @@ namespace MastercampProjectG139.ViewModels
         {
             //_medicaments.Clear();
 
-            foreach (Medicament medicament in _ordonnance.GetAllMedicaments())
+            foreach (ModelMedicament medicament in _ordonnance.GetAllMedicaments())
             {
                 MedicamentViewModel medicamentViewModel = new MedicamentViewModel(medicament);
                 _medicaments.Add(medicamentViewModel);

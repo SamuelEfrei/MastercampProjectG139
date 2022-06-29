@@ -6,23 +6,23 @@ using System.Threading.Tasks;
 
 namespace MastercampProjectG139.Models
 {
-    internal class Ordonnance
+    internal class ModelOrdonnance
     {
         private readonly MedList _medList;
         private string Name { get; }
 
-        public Ordonnance(string name)
+        public ModelOrdonnance(string name)
         {
             _medList = new MedList();
             Name = name;
         }
 
-        public IEnumerable<Medicament> GetAllMedicaments()
+        public IEnumerable<ModelMedicament> GetAllMedicaments()
         {
             return _medList.GetAllMedicaments();
         }
 
-        public async Task AddMed(Medicament medicament)
+        public async Task AddMed(ModelMedicament medicament)
         {
             _medList.AddMedicament(medicament);
         }

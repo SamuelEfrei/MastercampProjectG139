@@ -59,7 +59,7 @@ namespace MastercampProjectG139.ViewModels
         public ICommand CancelCommand { get;}
         
         //Le constructeur est appelé lorsqu'on appuie sur le bouton "annuler" ou "ajouter"
-        public AddMedViewModel(Ordonnance ordonnance, NavigationService medicamentViewNavigationService)
+        public AddMedViewModel(ModelOrdonnance ordonnance, NavigationService medicamentViewNavigationService)
         {
             SubmitCommand = new AddMedCommand(this, ordonnance, medicamentViewNavigationService);
             CancelCommand = new NavigateCommand(medicamentViewNavigationService); ;

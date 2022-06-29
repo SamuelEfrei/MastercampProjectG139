@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace MastercampProjectG139.Models
 {
-    internal class Medicament
+    internal class ModelMedicament
     {
         public string Name { get;}
         public string Frequence { get;}
 
         public string Duration { get;}
-        public Medicament(string name, string frequence, string duration)
+        public ModelMedicament(string name, string frequence, string duration)
         {
             Name = name;
             Frequence = frequence;
