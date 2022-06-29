@@ -20,13 +20,13 @@
                 <Image Source="/Images/close.png" x:Name="closeLoginBtn" MouseLeftButtonDown="CloseLoginBtn_MouseLeftButtonDown" Width="20" HorizontalAlignment="Right" Margin="0 10 10 0" />
                 <TextBlock HorizontalAlignment="Center" Margin="0 25 0 5" Text="Bienvenue" FontSize="28" FontWeight="Bold"/>
                 <TextBlock Text="Connectez-vous à votre compte" HorizontalAlignment="Center" FontSize="17" FontWeight="SemiBold"/>
-                
-                <TextBox Margin="0 50 0 0" x:Name="txtNumSecu" 
+
+                <TextBox Margin="0 50 0 0" x:Name="txtNumSecu" KeyDown="login_EnterDown"
                          Width="300" FontSize="18" BorderThickness="2"
                          materialDesign:HintAssist.Hint="Numéro de sécurité sociale"
                          Style="{StaticResource MaterialDesignOutlinedTextBox}"
                          BorderBrush="{DynamicResource MaterialDesignDivider}"/>
-                <PasswordBox Margin="0 50 0 0" x:Name="txtPwd" 
+                <PasswordBox Margin="0 50 0 0" x:Name="txtPwd" KeyDown="login_EnterDown"
                              Width="300" FontSize="18" BorderThickness="2"
                              materialDesign:HintAssist.Hint="Mot de passe"
                              Style="{StaticResource MaterialDesignOutlinedPasswordBox}"

@@ -24,12 +24,19 @@ namespace MastercampProjectG139
     /// </summary>
     public partial class MainWindow : Window
     {
+
         private readonly Ordonnance _ordonnance;
         private readonly NavigationStore _navigationStore;
+        private Medecin medecin;
 
-        public MainWindow()
+        public MainWindow() => InitializeComponent();
+
+        public MainWindow(Medecin medecin)
         {
             InitializeComponent();
+            this.medecin = medecin;
+            txtBlock_nomPrenom.Text = medecin.getNom().ToUpper() + " " + medecin.getPrenom().ToUpper();
+            
             _ordonnance = new Ordonnance("Ordonnance");
             _navigationStore = new NavigationStore();
             _navigationStore.CurrentViewModel = CreateMedicamentViewModel();
