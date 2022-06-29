@@ -17,34 +17,34 @@ namespace MastercampProjectG139
     /// </summary>
     public partial class App : Application
     {
-        private readonly Ordonnance _ordonnance;
-        private readonly NavigationStore _navigationStore;
+        //private readonly Ordonnance _ordonnance;
+        //private readonly NavigationStore _navigationStore;
 
-        public App()
-        {
-            _ordonnance = new Ordonnance("Ordonnance");
-            _navigationStore = new NavigationStore();
-        }
-        protected override void OnStartup(StartupEventArgs e)
-        {
-            _navigationStore.CurrentViewModel = CreateMedicamentViewModel();
-            MainWindow = new MainWindow()
-            {
-                DataContext = new MainViewModel(_navigationStore)
-            };
-            MainWindow.Show();
-            base.OnStartup(e);
-        }
+        //public App()
+        //{
+        //    _ordonnance = new Ordonnance("Ordonnance");
+        //    _navigationStore = new NavigationStore();
+        //}
+        //protected override void OnStartup(StartupEventArgs e)
+        //{
+        //    _navigationStore.CurrentViewModel = CreateMedicamentViewModel();
+        //    MainWindow = new MainWindow()
+        //    {
+        //        DataContext = new MainViewModel(_navigationStore)
+        //    };
+        //    MainWindow.Show();
+        //    base.OnStartup(e);
+        //}
 
-        private AddMedViewModel CreateAddMedViewModel()
-        {
-            return new AddMedViewModel(_ordonnance, new NavigationService(_navigationStore, CreateMedicamentViewModel)) ;
-        }
+        //private AddMedViewModel CreateAddMedViewModel()
+        //{
+        //    return new AddMedViewModel(_ordonnance, new NavigationService(_navigationStore, CreateMedicamentViewModel)) ;
+        //}
 
-        private MedListModel CreateMedicamentViewModel()
-        {
-            return new MedListModel(_ordonnance, new NavigationService(_navigationStore, CreateAddMedViewModel));
-        }
+        //private MedListModel CreateMedicamentViewModel()
+        //{
+        //    return new MedListModel(_ordonnance, new NavigationService(_navigationStore, CreateAddMedViewModel));
+        //}
     }
 
 }

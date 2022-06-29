@@ -11,13 +11,7 @@ namespace MastercampProjectG139.ViewModels
     internal class MainViewModel : ViewModelBase
     {
         
-
         private readonly NavigationStore _navigationStore;
-
-        
-
-        public ViewModelBase ListViewModel { get; }
-        public MedListModel MedList { get; }
         public ViewModelBase CurrentViewModel => _navigationStore.CurrentViewModel;
         public MainViewModel(NavigationStore navigationStore)
         {

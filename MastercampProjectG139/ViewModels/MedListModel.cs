@@ -25,8 +25,8 @@ namespace MastercampProjectG139.ViewModels
             _medicaments = new ObservableCollection<MedicamentViewModel>();
 
             AddMedCommand = new NavigateCommand(addMedNavigationService);
-            _medicaments.Add(new MedicamentViewModel(new Medicament("oui", "i", "o")));
-            _medicaments.Add(new MedicamentViewModel(new Medicament("oui", "i", "o")));
+            //_medicaments.Add(new MedicamentViewModel(new Medicament("oui", "i", "o")));
+            //_medicaments.Add(new MedicamentViewModel(new Medicament("oui", "i", "o")));
 
             UpdateMedicaments();
 

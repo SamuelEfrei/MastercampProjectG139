@@ -32,14 +32,16 @@ namespace MastercampProjectG139.Commands
                 OnCanExecutedChanged();  
             }
         }
-
+        //Vérifie si le champ est vide pour savoir si le le bouton est valide
         public override bool CanExecute(object parameter)
         {
             return !string.IsNullOrEmpty(_addMedViewModel.Name) && base.CanExecute(parameter);
         }
 
+        //Commande d'exécution lorsqu'on appuie sur le bouton ajouter dans la vue AddMed
         public override void Execute(object parameter)
         {
+            
             Medicament medicament = new Medicament(_addMedViewModel.Name, _addMedViewModel.Frequence, _addMedViewModel.Duration);
             try
             {
@@ -49,13 +51,6 @@ namespace MastercampProjectG139.Commands
     
                 MessageBox.Show("Le médicament a été ajouté", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 _medicamentViewNavigationService.Navigate();
-               
-
-
-                
-             
-               
-
 
             }
             catch (Exception)

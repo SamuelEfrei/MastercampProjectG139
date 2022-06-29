@@ -13,7 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MastercampProjectG139.Models;
+using MastercampProjectG139.Stores;
 using MastercampProjectG139.ViewModels;
+using MastercampProjectG139.Services;
 
 namespace MastercampProjectG139
 {
@@ -22,13 +24,16 @@ namespace MastercampProjectG139
     /// </summary>
     public partial class MainWindow : Window
     {
-  
-        
+        private readonly Ordonnance _ordonnance;
+        private readonly NavigationStore _navigationStore;
+
         public MainWindow()
         {
             InitializeComponent();
-            
-
+            _ordonnance = new Ordonnance("Ordonnance");
+            _navigationStore = new NavigationStore();
+            _navigationStore.CurrentViewModel = CreateMedicamentViewModel();
+            DataContext = new MainViewModel(_navigationStore);
 
         }
 
@@ -37,23 +42,31 @@ namespace MastercampProjectG139
             Application.Current.Shutdown();
         }
 
-       
+        private AddMedViewModel CreateAddMedViewModel()
+        {
+            return new AddMedViewModel(_ordonnance, new Services.NavigationService(_navigationStore, CreateMedicamentViewModel));
+        }
+
+        private MedListModel CreateMedicamentViewModel()
+        {
+            return new MedListModel(_ordonnance, new Services.NavigationService(_navigationStore, CreateAddMedViewModel));
+        }
 
         //private void BtnAdd_Click(object sender, RoutedEventArgs e)
         //{
-           
-            
+
+
         //    ContentControl contentControl = new ContentControl();
-         
+
         //  //contentControl.DataContext = new AddMedModel();
         //    contentControl.Content = new AddMedModel();
-               
-        //   panelMiddle.Children.Add(contentControl);
-           
-        //}
-      
 
-        
+        //   panelMiddle.Children.Add(contentControl);
+
+        //}
+
+
+
 
     }
 }
