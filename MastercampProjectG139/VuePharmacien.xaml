@@ -56,7 +56,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <Button x:Name="btn_logOut" Background="IndianRed" Content="Se déconnecter" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="0" Width="auto" />
+                <Button x:Name="btn_logOut" Background="IndianRed" Content="Se déconnecter" Click="Logout" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="0" Width="auto" Cursor="Hand" />
                 <Button x:Name="btn_updateOrdo" Content="Mettre à jour l'ordonnance" Grid.Column="1" Grid.Row="0" Width="auto" HorizontalAlignment="Right" />
             </Grid>
         </StackPanel>

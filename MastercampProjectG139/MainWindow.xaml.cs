@@ -59,6 +59,12 @@ namespace MastercampProjectG139
             Application.Current.Shutdown();
         }
 
+        private void Logout(object sender, RoutedEventArgs e)
+        {
+            LoginScreen loginScreen = new LoginScreen();
+            loginScreen.Show();
+            this.Close();
+        }
 
         private AddMedViewModel CreateAddMedViewModel()
         {

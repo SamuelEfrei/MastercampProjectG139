@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MastercampProjectG139.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="250" d:DesignWidth="800">
     
     
     <Grid>
@@ -16,7 +16,7 @@
         <StackPanel >
             <Button  Grid.Row="0" Command="{Binding AddMedCommand}" Content="Ajouter un autre médicament" Cursor="Hand" Margin="200 10 200 0" Width="350"/>
         </StackPanel>
-        <ScrollViewer Grid.Row="1" CanContentScroll="False" PreviewMouseWheel="FileListScroller_PreviewMouseWheel" VerticalScrollBarVisibility="Disabled" x:Name="FileListScroller">
+        <ScrollViewer Grid.Row="1" Height="210" CanContentScroll="False" PreviewMouseWheel="FileListScroller_PreviewMouseWheel" VerticalScrollBarVisibility="Disabled" x:Name="FileListScroller"> <!---->
             <ListView ItemsSource="{Binding Medicaments}" Grid.Row="1">
             
             <ListView.View>

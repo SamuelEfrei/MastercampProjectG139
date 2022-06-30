@@ -28,7 +28,7 @@ namespace MastercampProjectG139.Commands
 
         private void OnViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if(e.PropertyName == nameof(AddMedViewModel.Name))
+            if(e.PropertyName == nameof(AddMedViewModel.Name) || e.PropertyName == nameof(AddMedViewModel.Frequence) || e.PropertyName == nameof(AddMedViewModel.Duration))
             {
                 OnCanExecutedChanged();  
             }
@@ -36,7 +36,7 @@ namespace MastercampProjectG139.Commands
         //Vérifie si le champ est vide pour savoir si le le bouton est valide
         public override bool CanExecute(object parameter)
         {
-            return !string.IsNullOrEmpty(_addMedViewModel.Name) && base.CanExecute(parameter);
+            return !string.IsNullOrEmpty(_addMedViewModel.Name) && !string.IsNullOrEmpty(_addMedViewModel.Duration) && !string.IsNullOrEmpty(_addMedViewModel.Frequence) &&  base.CanExecute(parameter);
         }
 
         //Commande d'exécution lorsqu'on appuie sur le bouton ajouter dans la vue AddMed
