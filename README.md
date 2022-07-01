@@ -5,9 +5,9 @@
 1. [Description](#Description)
 2. [Pré-requis](#Pré-requis)
 3. [Installation](#Installation)
-4. [Setup de la BDD](#Setup)
-5. [Démarrer l'application](#Démarrer)
-6. [Utiliser l'application](#Utiliser)
+4. [Setup de la BDD](#Setup de la BDD)
+5. [Démarrer l'application](#Démarrer l'application)
+6. [Utiliser l'application](#Utiliser l'application)
 
 # Description
 Application WPF C# permettant de générer, d'envoyer, et de récupérer des ordonnances dématérialisées.
