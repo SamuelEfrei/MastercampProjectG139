@@ -21,9 +21,12 @@ namespace MastercampProjectG139
     /// </summary>
     public partial class LoginScreen : Window
     {
+        Config conf;
+
         public LoginScreen()
         {
             InitializeComponent();
+            conf = new Config(); //Charge la configuration
         }
 
         private void CloseLoginBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -41,7 +44,7 @@ namespace MastercampProjectG139
             string pwdToHash = userPassword + "^Y8~JJ"; //Ajout d'un string au mdp pour renforcer la sécurité
             string hashToStoreInDatabase = BCrypt.Net.BCrypt.HashPassword(pwdToHash, BCrypt.Net.BCrypt.GenerateSalt()); //Création du mdp hashé
 
-            String connectionString = "SERVER=localhost;PORT=3306;DATABASE=mastercamp;UID=root;PASSWORD=1234";
+            String connectionString = conf.DbConnectionString;
             MySqlConnection connection = new MySqlConnection(connectionString);
             {
                 if (connection.State == System.Data.ConnectionState.Closed)
@@ -59,7 +62,8 @@ namespace MastercampProjectG139
 
         private void BtnSubmit_Click(object sender, RoutedEventArgs e)  
         {
-            loginUser();
+            if(txtNumSecu.Text != "" && txtPwd.Password != null)
+                loginUser();
         }
 
         private void login_EnterDown(object sender, KeyEventArgs e)
@@ -86,7 +90,7 @@ namespace MastercampProjectG139
                 MessageBox.Show(ex.ToString());
             }*/
 
-            String connectionString = "SERVER=localhost;PORT=3306;DATABASE=mastercamp;UID=root;PASSWORD=1234"; //Paramètres de connexion à la base de données (bdd)
+            String connectionString = conf.DbConnectionString; //Paramètres de connexion à la base de données (bdd)
             MySqlConnection connection = new MySqlConnection(connectionString);
 
             String myStoredHash;
@@ -107,7 +111,6 @@ namespace MastercampProjectG139
 
                 mySqlCmd.CommandType = System.Data.CommandType.Text;
                 mySqlCmd.Parameters.AddWithValue("@Username", txtNumSecu.Text); //Identifiant renseigné ici plutôt que dans requête SQL pour éviter injection SQL malveillante
-                //var mySqlResult = mySqlCmd.ExecuteScalar().ToString(); //Récupération du mdp hashé de la bdd en type string
 
                 MySqlDataReader reader = mySqlCmd.ExecuteReader(); //Récupération des arguments demandés
                 while (reader.Read())
