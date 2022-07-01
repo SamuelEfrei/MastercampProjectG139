@@ -61,8 +61,8 @@ namespace MastercampProjectG139.ViewModels
 
         public void getMed()
         {
-
-            String connectionString = "SERVER=localhost;DATABASE=mastercamp;UID=root;PASSWORD=password";
+            Config conf = new Config();
+            String connectionString = conf.DbConnectionString;
             MySqlConnection connection = new MySqlConnection(connectionString);
             {
                 try

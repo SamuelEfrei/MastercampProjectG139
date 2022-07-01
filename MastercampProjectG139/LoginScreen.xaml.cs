@@ -21,9 +21,12 @@ namespace MastercampProjectG139
     /// </summary>
     public partial class LoginScreen : Window
     {
+        Config conf;
+
         public LoginScreen()
         {
             InitializeComponent();
+            conf = new Config(); //Charge la configuration
         }
 
         private void CloseLoginBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -41,7 +44,7 @@ namespace MastercampProjectG139
             string pwdToHash = userPassword + "^Y8~JJ"; //Ajout d'un string au mdp pour renforcer la sécurité
             string hashToStoreInDatabase = BCrypt.Net.BCrypt.HashPassword(pwdToHash, BCrypt.Net.BCrypt.GenerateSalt()); //Création du mdp hashé
 
-            String connectionString = "SERVER=localhost;PORT=3306;DATABASE=mastercamp;UID=root;PASSWORD=password";
+            String connectionString = conf.DbConnectionString;
             MySqlConnection connection = new MySqlConnection(connectionString);
             {
                 if (connection.State == System.Data.ConnectionState.Closed)
@@ -86,7 +89,7 @@ namespace MastercampProjectG139
                 MessageBox.Show(ex.ToString());
             }*/
 
-            String connectionString = "SERVER=localhost;PORT=3306;DATABASE=mastercamp;UID=root;PASSWORD=password"; //Paramètres de connexion à la base de données (bdd)
+            String connectionString = conf.DbConnectionString; //Paramètres de connexion à la base de données (bdd)
             MySqlConnection connection = new MySqlConnection(connectionString);
 
             String myStoredHash;
