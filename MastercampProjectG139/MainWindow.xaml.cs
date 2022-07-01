@@ -16,6 +16,7 @@ using MastercampProjectG139.Models;
 using MastercampProjectG139.Stores;
 using MastercampProjectG139.ViewModels;
 using MastercampProjectG139.Services;
+using System.Collections.ObjectModel;
 
 namespace MastercampProjectG139
 {
@@ -31,7 +32,7 @@ namespace MastercampProjectG139
         private Medecin medecin;
 
         public MainWindow() => InitializeComponent();
-
+      
         public MainWindow(Medecin medecin)
         {
             InitializeComponent();
@@ -42,8 +43,8 @@ namespace MastercampProjectG139
 
             this.medecin = medecin;
             txtBlock_nomPrenom.Text = medecin.getNom().ToUpper() + " " + medecin.getPrenom().ToUpper();
-            
-            
+
+           
 
         }
 

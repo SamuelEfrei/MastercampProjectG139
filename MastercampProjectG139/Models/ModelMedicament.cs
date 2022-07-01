@@ -12,11 +12,14 @@ namespace MastercampProjectG139.Models
         public string Frequence { get;}
 
         public string Duration { get;}
+
+    
         public ModelMedicament(string name, string frequence, string duration)
         {
             Name = name;
             Frequence = frequence;
             Duration = duration;
+         
         }
     }
 }

@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MastercampProjectG139.Views"
+             xmlns:behaviors="clr-namespace:WPFTextBoxAutoComplete;assembly=WPFTextBoxAutoComplete"
              mc:Ignorable="d" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              d:DesignHeight="450" d:DesignWidth="800">
@@ -36,7 +37,11 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="2*" />
                     </Grid.ColumnDefinitions>
-                    <TextBox x:Name="medicSearch" Grid.Column="0" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Médicament" Cursor="Arrow" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox x:Name="medicSearch" 
+                             Grid.Column="0" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Médicament" Cursor="Arrow" 
+                             Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
+                             behaviors:AutoCompleteBehavior.AutoCompleteItemsSource="{Binding TestItems}"
+                             behaviors:AutoCompleteBehavior.AutoCompleteStringComparison="InvariantCulture"/>
                     <TextBox  Grid.Column="1" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Quantité" Cursor="Arrow" Text="{Binding Frequence, UpdateSourceTrigger=PropertyChanged}" Margin="10 0 10 0" />
                     
                     <TextBox x:Name="txtBox_dureeTraitement" Width="100" Grid.Column="2" materialDesign:HintAssist.Hint="Combien de jours ?" VerticalAlignment="Center" Cursor="Arrow" Text="{Binding Duration, UpdateSourceTrigger=PropertyChanged}"/>
