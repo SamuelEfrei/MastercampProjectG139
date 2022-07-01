@@ -62,7 +62,8 @@ namespace MastercampProjectG139
 
         private void BtnSubmit_Click(object sender, RoutedEventArgs e)  
         {
-            loginUser();
+            if(txtNumSecu.Text != "" && txtPwd.Password != null)
+                loginUser();
         }
 
         private void login_EnterDown(object sender, KeyEventArgs e)
@@ -110,7 +111,6 @@ namespace MastercampProjectG139
 
                 mySqlCmd.CommandType = System.Data.CommandType.Text;
                 mySqlCmd.Parameters.AddWithValue("@Username", txtNumSecu.Text); //Identifiant renseigné ici plutôt que dans requête SQL pour éviter injection SQL malveillante
-                //var mySqlResult = mySqlCmd.ExecuteScalar().ToString(); //Récupération du mdp hashé de la bdd en type string
 
                 MySqlDataReader reader = mySqlCmd.ExecuteReader(); //Récupération des arguments demandés
                 while (reader.Read())
