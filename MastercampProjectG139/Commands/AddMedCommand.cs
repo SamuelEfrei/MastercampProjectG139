@@ -1,6 +1,7 @@
 ﻿using MastercampProjectG139.Models;
 using MastercampProjectG139.Services;
 using MastercampProjectG139.ViewModels;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -42,8 +43,34 @@ namespace MastercampProjectG139.Commands
         //Commande d'exécution lorsqu'on appuie sur le bouton ajouter dans la vue AddMed
         public override void Execute(object parameter)
         {
-            
-            ModelMedicament medicament = new ModelMedicament(_addMedViewModel.Name, _addMedViewModel.Frequence, _addMedViewModel.Duration);
+            Config conf = new Config();
+            String connectionString = conf.DbConnectionString;
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            int idMed = 0;
+            {
+                try
+                {
+                    if (connection.State == System.Data.ConnectionState.Closed)
+                        connection.Open();
+                    String query = "Select idMedic from Medicament where nom = @n";
+                    MySqlCommand mySqlCmd = new MySqlCommand(query, connection);
+                    
+                    mySqlCmd.CommandType = System.Data.CommandType.Text;
+                    mySqlCmd.Parameters.AddWithValue("@n", _addMedViewModel.Name);
+                    MySqlDataReader reader = mySqlCmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        idMed = (int)reader["idMedic"];
+                    }
+                    reader.Close();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.ToString());
+                }
+            }
+
+            ModelMedicament medicament = new ModelMedicament(idMed, _addMedViewModel.Name, _addMedViewModel.Frequence, _addMedViewModel.Duration);
             try
             {
                 //Le nouveau "medicament" est ajouté à la liste "_ordonnance"

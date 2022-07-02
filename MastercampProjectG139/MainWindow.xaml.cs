@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using MastercampProjectG139.Models;
 using MastercampProjectG139.Stores;
 using MastercampProjectG139.ViewModels;
+using MastercampProjectG139.Commands;
 using MastercampProjectG139.Services;
 using System.Collections.ObjectModel;
 
@@ -30,6 +31,7 @@ namespace MastercampProjectG139
         private readonly MedList medList;
         private readonly NavigationStore _navigationStore;
         private Medecin medecin;
+        private string numSS;
 
         public MainWindow() => InitializeComponent();
       
@@ -57,6 +59,9 @@ namespace MastercampProjectG139
         {
             PDF ratio = new PDF();
             ratio.GeneratePDF(medecin, _ordonnance);
+            DatabaseCommand databaseCommand = new DatabaseCommand();
+            numSS = txtBox_numSSPatient.Text;
+            databaseCommand.OrdoSubmit(medecin, _ordonnance, numSS);
             Application.Current.Shutdown();
         }
 

@@ -10,11 +10,13 @@ using System.Configuration;
 using System.Security.Cryptography;
 using MySql.Data.MySqlClient;
 using System.Windows;
+using MastercampProjectG139.Models;
 
 namespace MastercampProjectG139
 {
     public class Ordonnance
     {
+        
         private int idOrdo;
         private int codeSecret;
         private string numSSPatient;
@@ -28,6 +30,7 @@ namespace MastercampProjectG139
             this.numSSPatient = numSSPatient;
             this.idPharma = idPharma;
             this.idMedecin = idMedecin;
+            
         }
 
         #region GETTERS
@@ -103,7 +106,7 @@ namespace MastercampProjectG139
 
         protected void ordonnanceSubmit(object sender, EventArgs e)   //Envoi de données cryptées vers la bdd
         {
-            String connectionString = "SERVER=localhost;DATABASE=mastercamp;UID=root;PASSWORD=password";
+            String connectionString = "SERVER=localhost;DATABASE=mastercamp;UID=root;PASSWORD=1234";
             MySqlConnection connection = new MySqlConnection(connectionString);
             {
                 if (connection.State == System.Data.ConnectionState.Closed)
@@ -119,6 +122,7 @@ namespace MastercampProjectG139
                 mySqlCmd.ExecuteNonQuery();
             }
         }
+
 
         protected MedicamentOrdonnance getMedicamentOrdonnance(object sender, EventArgs e)   //réception de données cryptées de la bdd
         {

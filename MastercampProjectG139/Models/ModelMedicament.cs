@@ -8,14 +8,16 @@ namespace MastercampProjectG139.Models
 {
     internal class ModelMedicament
     {
+        public int Id { get; }
         public string Name { get;}
         public string Frequence { get;}
 
         public string Duration { get;}
 
     
-        public ModelMedicament(string name, string frequence, string duration)
+        public ModelMedicament(int id, string name, string frequence, string duration)
         {
+            Id = id;
             Name = name;
             Frequence = frequence;
             Duration = duration;

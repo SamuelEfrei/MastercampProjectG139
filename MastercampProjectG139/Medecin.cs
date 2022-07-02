@@ -14,5 +14,11 @@ namespace MastercampProjectG139
         {
             this.idMedecin = idMedecin;
         }
+
+        public int getIdMedecin()
+        {
+            return idMedecin;
+        }
+
     }
 }

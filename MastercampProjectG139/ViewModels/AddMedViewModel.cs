@@ -16,6 +16,20 @@ namespace MastercampProjectG139.ViewModels
 {
     class AddMedViewModel : ViewModelBase
     {
+
+        private int _id;
+        public int Id 
+        { 
+            get 
+            { 
+                return _id; 
+            }
+            set
+            {
+                _id = value;
+                OnPropertyChanged(nameof(Id));
+            }
+        }
         private string _name;
         public string Name
         {
@@ -40,7 +54,7 @@ namespace MastercampProjectG139.ViewModels
             set
             {
                 _frequence = value;
-                OnPropertyChanged(nameof(_frequence));
+                OnPropertyChanged(nameof(Frequence));
             }
         }
 

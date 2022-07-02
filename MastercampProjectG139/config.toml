@@ -3,4 +3,4 @@ server = "localhost"
 port = 3306
 name = "mastercamp"
 uid = "root"
-password = "password"
+password = "1234"

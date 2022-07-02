@@ -48,7 +48,7 @@ namespace MastercampProjectG139
 
             foreach (ModelMedicament med in ordo.GetAllMedicaments())
             {
-                gfx.DrawString(med.Name.ToUpper() + " " + med.Frequence + " pendant " + med.Duration, font, XBrushes.Black,
+                gfx.DrawString(med.Name.ToUpper() + " " + med.Frequence + " pendant " + med.Duration + med.Id, font, XBrushes.Black,
                 new XRect(0, marge, page.Width, page.Height), XStringFormats.Center);                
                 marge+=30;
             }
