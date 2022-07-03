@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\AppLogo.png" />
     <None Remove="Images\close.png" />
     <None Remove="Views\eyvreva4.msf~" />
   </ItemGroup>
@@ -30,6 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\AppLogo.png" />
     <Resource Include="Images\close.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

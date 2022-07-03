@@ -23,5 +23,10 @@ namespace MastercampProjectG139
         {
             InitializeComponent();
         }
+
+        private void closeAbout_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
