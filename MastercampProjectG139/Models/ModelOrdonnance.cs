@@ -22,6 +22,11 @@ namespace MastercampProjectG139.Models
             return _medList.GetAllMedicaments();
         }
 
+        public void RemoveAllMedicaments()
+        {
+            _medList.RemoveAllMedicaments();
+        }
+
         public async Task AddMed(ModelMedicament medicament)
         {
             _medList.AddMedicament(medicament);

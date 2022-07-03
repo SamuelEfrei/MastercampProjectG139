@@ -55,7 +55,6 @@
         
             <!--Récupération des data pour afficher les vues lists et ajouter médicaments-->
         <StackPanel Margin="0 10 0 0" x:Name="panelMiddle" Background="LightGray" Height="250">
-
             <Grid>
                 <Grid.Resources>
                     <DataTemplate DataType="{x:Type viewmodels:AddMedViewModel}">
@@ -65,9 +64,7 @@
                         <views:MedList/>
                     </DataTemplate>
                 </Grid.Resources>
-                <ContentControl  Content="{Binding CurrentViewModel}"/>
-
-
+                <ContentControl  Content="{Binding CurrentViewModel }"/>
             </Grid>
         </StackPanel>
         
@@ -85,6 +82,7 @@
                 </Grid.RowDefinitions>
 
                 <Button x:Name="btn_logOut" Background="IndianRed" Content="Se déconnecter" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="0" Width="auto" Click="Logout" BorderBrush="IndianRed" Cursor="Hand" />
+                <Button x:Name="btnTest" Content="Test" Grid.Column="0" Grid.Row="0" Width="60" HorizontalAlignment="Right" Click="btnTest_Click" />
                 <TextBox x:Name="txtBox_mailPatient" Grid.Column="1" materialDesign:HintAssist.Hint="Adresse mail du patient" Width="130" VerticalAlignment="Center" HorizontalAlignment="Right" />
                 <TextBox x:Name="txtBox_numSSPatient" Text="{Binding NumSS, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" materialDesign:HintAssist.Hint="Numéro de sécurité sociale du patient" Width="210" VerticalAlignment="Center" Cursor="Arrow" />
                 <Button x:Name="btn_validate" Content="Valider" Grid.Column="3" Grid.Row="0" Width="auto" Click="pdfratio" />

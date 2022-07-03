@@ -11,7 +11,6 @@ namespace MastercampProjectG139.Models
         public int Id { get; }
         public string Name { get;}
         public string Frequence { get;}
-
         public string Duration { get;}
 
     

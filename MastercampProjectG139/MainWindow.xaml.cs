@@ -30,6 +30,7 @@ namespace MastercampProjectG139
         private readonly ModelOrdonnance _ordonnance;
         private readonly MedList medList;
         private readonly NavigationStore _navigationStore;
+        private AddMedViewModel amvm;
         private Medecin medecin;
         private string numSS;
 
@@ -59,7 +60,7 @@ namespace MastercampProjectG139
             DatabaseCommand databaseCommand = new DatabaseCommand();
             numSS = txtBox_numSSPatient.Text;
             databaseCommand.OrdoSubmit(medecin, _ordonnance, numSS);
-            Application.Current.Shutdown();
+            //Application.Current.Shutdown();
         }
 
         private void Logout(object sender, RoutedEventArgs e)
@@ -71,7 +72,8 @@ namespace MastercampProjectG139
 
         private AddMedViewModel CreateAddMedViewModel()
         {
-            return new AddMedViewModel(_ordonnance, new Services.NavigationService(_navigationStore, CreateMedicamentViewModel));
+            amvm = new AddMedViewModel(_ordonnance, new Services.NavigationService(_navigationStore, CreateMedicamentViewModel));
+            return amvm;
         }
 
         private MedListModel CreateMedicamentViewModel()
@@ -85,6 +87,19 @@ namespace MastercampProjectG139
             About about = new About();
             about.Topmost = true;
             about.Show();
+        }
+
+        private void btnTest_Click(object sender, RoutedEventArgs e)
+        {
+            ResetFields();
+        }
+
+        //Reset tous les champs
+        private void ResetFields()
+        {
+            txtBox_mailPatient.Text = "";
+            txtBox_numSSPatient.Text = "";
+            _ordonnance.RemoveAllMedicaments();
         }
     }
 }

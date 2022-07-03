@@ -8,7 +8,7 @@ namespace MastercampProjectG139.Models
 {
     internal class MedList
     {
-        private readonly List<ModelMedicament> _medicaments;
+        private List<ModelMedicament> _medicaments;
 
         public MedList()
         {
@@ -23,6 +23,16 @@ namespace MastercampProjectG139.Models
         public void AddMedicament(ModelMedicament medicament)
         {
             _medicaments.Add(medicament);
+        }
+
+        public void RemoveMedicament(ModelMedicament medicament)
+        {
+            _medicaments.Remove(medicament);
+        }
+
+        public void RemoveAllMedicaments()
+        {
+            _medicaments.Clear();
         }
     }
 }
