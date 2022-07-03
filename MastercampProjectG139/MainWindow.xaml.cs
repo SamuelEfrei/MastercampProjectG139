@@ -60,6 +60,7 @@ namespace MastercampProjectG139
             DatabaseCommand databaseCommand = new DatabaseCommand();
             numSS = txtBox_numSSPatient.Text;
             databaseCommand.OrdoSubmit(medecin, _ordonnance, numSS);
+            ResetFields();
             //Application.Current.Shutdown();
         }
 
@@ -100,6 +101,7 @@ namespace MastercampProjectG139
             txtBox_mailPatient.Text = "";
             txtBox_numSSPatient.Text = "";
             _ordonnance.RemoveAllMedicaments();
+            _navigationStore.CurrentViewModel = CreateMedicamentViewModel();
         }
     }
 }
