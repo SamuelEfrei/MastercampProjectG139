@@ -72,8 +72,8 @@
         </StackPanel>
         
         
-        <StackPanel x:Name="panelBottom" VerticalAlignment="Bottom" Orientation="Vertical" HorizontalAlignment="Stretch">
-            <Grid Height="65" Margin="10 0 10 0">
+        <DockPanel x:Name="panelBottom" VerticalAlignment="Bottom" HorizontalAlignment="Stretch">
+            <Grid Height="65" Margin="10 0 10 0" DockPanel.Dock="Bottom">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="3*" />
                     <ColumnDefinition Width="2*" />
@@ -89,7 +89,7 @@
                 <TextBox x:Name="txtBox_numSSPatient" Text="{Binding NumSS, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" materialDesign:HintAssist.Hint="Numéro de sécurité sociale du patient" Width="210" VerticalAlignment="Center" Cursor="Arrow" />
                 <Button x:Name="btn_validate" Content="Valider" Grid.Column="3" Grid.Row="0" Width="auto" Click="pdfratio" />
             </Grid>
-        </StackPanel>
+        </DockPanel>
     </StackPanel>
 
 </Window>
