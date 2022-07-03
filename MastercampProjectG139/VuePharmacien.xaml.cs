@@ -35,8 +35,6 @@ namespace MastercampProjectG139
             this.pharmacien = pharmacien;
             txtBlock_nomPrenom.Text = pharmacien.getNom().ToUpper() + " " + pharmacien.getPrenom().ToUpper();
             _ordoP = new ModelOrdonnance("Ordonnance Pharmacien");
-           
-
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -56,9 +54,13 @@ namespace MastercampProjectG139
             numSS = txtBox_numSSPatient.Text;
             code = txtBox_codePatient.Text;
             databaseCommand.getOrdonnance(pharmacien, numSS, code, _ordoP);
-            
-           
+        }
 
+        private void About_Click(object sender, RoutedEventArgs e)
+        {
+            About about = new About();
+            about.Topmost = true;
+            about.Show();
         }
     }
 }
