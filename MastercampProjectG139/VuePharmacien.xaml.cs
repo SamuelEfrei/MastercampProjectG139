@@ -1,4 +1,7 @@
-﻿using System;
+﻿using MastercampProjectG139.Commands;
+using MastercampProjectG139.Models;
+using MastercampProjectG139.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +23,9 @@ namespace MastercampProjectG139
     public partial class VuePharmacien : Window
     {
         private Pharmacien pharmacien;
+        private string numSS;
+        private string code;
+        private readonly ModelOrdonnance _ordoP;
 
         public VuePharmacien() => InitializeComponent();
 
@@ -28,6 +34,9 @@ namespace MastercampProjectG139
             InitializeComponent();
             this.pharmacien = pharmacien;
             txtBlock_nomPrenom.Text = pharmacien.getNom().ToUpper() + " " + pharmacien.getPrenom().ToUpper();
+            _ordoP = new ModelOrdonnance("Ordonnance Pharmacien");
+           
+
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -40,6 +49,16 @@ namespace MastercampProjectG139
             LoginScreen loginScreen = new LoginScreen();
             loginScreen.Show();
             this.Close();
+        }
+        private void GetOrdo(object sender, RoutedEventArgs e)
+        {
+            DatabaseCommand databaseCommand = new DatabaseCommand();
+            numSS = txtBox_numSSPatient.Text;
+            code = txtBox_codePatient.Text;
+            databaseCommand.getOrdonnance(pharmacien, numSS, code, _ordoP);
+            
+           
+
         }
     }
 }

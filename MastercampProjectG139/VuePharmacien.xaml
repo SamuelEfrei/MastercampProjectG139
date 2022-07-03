@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:MastercampProjectG139"
+        xmlns:viewmodels="clr-namespace:MastercampProjectG139.ViewModels"
+        xmlns:views="clr-namespace:MastercampProjectG139.Views"
         mc:Ignorable="d"
         Title="OrdOnline - Pharmacien" Height="475" Width="800">
+
     
     <StackPanel Orientation="Vertical">
         <DockPanel>
@@ -33,9 +36,9 @@
                     <RowDefinition Height="2*" />
                 </Grid.RowDefinitions>
                 <TextBlock Text="Récupérer une ordonnance" Margin="10 0 0 0" VerticalAlignment="Center" FontWeight="Bold" FontSize="28" Grid.Column="0" Grid.Row="0" />
-                <TextBox x:Name="txtBox_numSSPatient" Grid.Column="0" Grid.Row="1" Margin="20 0 0 0" materialDesign:HintAssist.Hint="Numéro de sécurité sociale du patient" Width="210" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <TextBox x:Name="txtBox_numSSPatient" Grid.Column="0" Grid.Row="1" Margin="20 0 0 0" materialDesign:HintAssist.Hint="Numéro de sécurité sociale du patient" Width="210" VerticalAlignment="Center" HorizontalAlignment="Left" Cursor="Arrow"/>
                 <TextBox x:Name="txtBox_codePatient" Grid.Column="0" Grid.Row="1" Margin="45 0 0 0" TextAlignment="Center" materialDesign:HintAssist.Hint="Code secret" Width="70" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                <Button x:Name="btn_recupOrdo" Content="Récupérer l'ordonnance" HorizontalAlignment="Right" Grid.Column="0" Grid.Row="1" Width="auto" />
+                <Button x:Name="btn_recupOrdo" Click="GetOrdo" Content="Récupérer l'ordonnance" HorizontalAlignment="Right" Grid.Column="0" Grid.Row="1" Width="auto" />
                 <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Vertical"  HorizontalAlignment="Right" Margin="0 0 10 0" VerticalAlignment="Center">
                     <TextBlock x:Name="txtBlock_nomPrenom" TextAlignment="Right" FontSize="15" FontStyle="Italic" Text="NOM Prénom" />
                     <TextBlock Text="Pharmacien" FontSize="15" TextAlignment="Right" FontWeight="DemiBold" FontStyle="Italic" />
@@ -43,8 +46,10 @@
             </Grid>
         </StackPanel>
 
+        
         <StackPanel Margin="0 10 0 0" x:Name="panelMiddle" Background="LightGray" Height="250">
             <TextBlock Text="Récupérez une ordonnance pour afficher son contenu ici." VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" />
+            
         </StackPanel>
 
         <StackPanel x:Name="panelBottom" VerticalAlignment="Bottom" Orientation="Vertical" HorizontalAlignment="Stretch">
