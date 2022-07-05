@@ -122,6 +122,7 @@ namespace MastercampProjectG139.Commands
             long numdb = -1;
             string codedb = "Erreur";
             int idOrdo = -1;
+            numSS = numSS.Replace(" ", "");
             Config conf = new Config();
             String connectionString = conf.DbConnectionString;
             //MessageBox.Show(numSS + " " + code, "Error", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -146,7 +147,7 @@ namespace MastercampProjectG139.Commands
                     reader.Close();
                     if(codedb == "Erreur" || numdb == -1)
                     {
-                        MessageBox.Show("Vous n'avez pas rentré les bons", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("Vous n'avez pas rentré les bons identifiants", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                     else
                     {
