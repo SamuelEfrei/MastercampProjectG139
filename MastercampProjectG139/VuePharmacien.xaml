@@ -48,8 +48,22 @@
 
         
         <StackPanel Margin="0 10 0 0" x:Name="panelMiddle" Background="LightGray" Height="250">
-            <TextBlock Text="Récupérez une ordonnance pour afficher son contenu ici." VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" />
+            <Grid>
+                <ListView x:Name="pharatio" ItemsSource="{Binding MedList}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Name}" Margin="3,0"/>
+                                <TextBlock Text="{Binding Frequence}" Margin="3,0"/>
+                                <TextBlock Text="{Binding Duration}" Margin="3,0"/>
+                                <CheckBox IsChecked="False" Margin="3,0"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
             
+
         </StackPanel>
 
         <StackPanel x:Name="panelBottom" VerticalAlignment="Bottom" Orientation="Vertical" HorizontalAlignment="Stretch">
