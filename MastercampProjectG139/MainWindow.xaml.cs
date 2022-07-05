@@ -18,6 +18,7 @@ using MastercampProjectG139.ViewModels;
 using MastercampProjectG139.Commands;
 using MastercampProjectG139.Services;
 using System.Collections.ObjectModel;
+using System.Net.Mail;
 
 namespace MastercampProjectG139
 {
@@ -60,6 +61,33 @@ namespace MastercampProjectG139
             DatabaseCommand databaseCommand = new DatabaseCommand();
             numSS = txtBox_numSSPatient.Text;
             databaseCommand.OrdoSubmit(medecin, _ordonnance, numSS);
+
+            try
+            {
+                MailMessage mail = new MailMessage();
+                SmtpClient smtp = new SmtpClient("smtp.laposte.net");
+                mail.From = new MailAddress("ordonline-project@laposte.net");
+                mail.To.Add(txtBox_mailPatient.Text);
+                mail.Subject = "Votre ordonance en ligne.";
+                mail.Body = "Madame, Monsieur,\n\nVeuillez trouver ci-joint votre ordonnance en ligne ainsi que le code à six chiffre à donner à votre phramacien lors du retrait en pharmacie.\n\nCordialement,\n\n\nOrdonline, application d'ordonnances dématérialisées";
+
+                string path = Environment.CurrentDirectory + "\\Ordonnance.pdf";
+
+                System.Net.Mail.Attachment attachment;
+                attachment = new System.Net.Mail.Attachment(path);
+                mail.Attachments.Add(attachment);
+
+                smtp.Port = 587;
+                smtp.Credentials = new System.Net.NetworkCredential("ordonline-project@laposte.net", "Groupe139!!!");
+                smtp.EnableSsl = true;
+                smtp.Send(mail);
+                MessageBox.Show("Le mail a bien été envoyé.", "Mail envoyé", MessageBoxButton.OK);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
             ResetFields();
             //Application.Current.Shutdown();
         }
