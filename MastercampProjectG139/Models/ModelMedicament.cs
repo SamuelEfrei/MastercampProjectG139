@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MastercampProjectG139.Models
 {
-    internal class ModelMedicament
+    public class ModelMedicament
     {
         public int Id { get; }
         public string Name { get;}

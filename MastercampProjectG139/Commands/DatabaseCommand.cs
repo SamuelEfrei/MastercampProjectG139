@@ -16,8 +16,7 @@ namespace MastercampProjectG139.Commands
         public void OrdoSubmit(Medecin medecin, ModelOrdonnance ordonnance, string numSS)
         {
             //Génère un nombre aléatoire à 6 chiffres
-            Random rand = new Random();
-            int code = rand.Next(1, 999999);
+            int code = ordonnance.getCode();
             //Permet de générer des nombres comme 000123
             String scode = code.ToString("000000");
 
@@ -117,7 +116,7 @@ namespace MastercampProjectG139.Commands
                         while (reader2.Read())
                     {
                         //MessageBox a enlever lorsque la liste sera terminé, juste ici pour les tests
-                        MessageBox.Show((string)reader2["nom"], "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                        //MessageBox.Show((string)reader2["nom"], "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                         ModelMedicament medicament = new ModelMedicament((int)reader2["idMedic"], (string)reader2["nom"], (string)reader2["quantiteParJour"] , (string)reader2["dureeMedicament"]);
                         _ordoP.AddMed(medicament);
                     }

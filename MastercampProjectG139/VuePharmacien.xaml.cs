@@ -3,6 +3,8 @@ using MastercampProjectG139.Models;
 using MastercampProjectG139.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +28,8 @@ namespace MastercampProjectG139
         private string numSS;
         private string code;
         private readonly ModelOrdonnance _ordoP;
+        public ObservableCollection<ModelMedicament> _medlist;
+
 
         public VuePharmacien() => InitializeComponent();
 
@@ -35,7 +39,27 @@ namespace MastercampProjectG139
             this.pharmacien = pharmacien;
             txtBlock_nomPrenom.Text = pharmacien.getNom().ToUpper() + " " + pharmacien.getPrenom().ToUpper();
             _ordoP = new ModelOrdonnance("Ordonnance Pharmacien");
+
         }
+
+        public ObservableCollection<ModelMedicament> Medlist()
+        {
+            IEnumerable<ModelMedicament> lal = _ordoP.GetAllMedicaments();
+            if (lal!=null) {
+                lal = Enumerable.Empty<ModelMedicament>();
+                lal = _ordoP.GetAllMedicaments();
+                _medlist = new ObservableCollection<ModelMedicament>(lal);
+                _ordoP.RemoveAllMedicaments();
+                return _medlist;
+
+            }
+            else
+            {
+                _medlist = new ObservableCollection<ModelMedicament>(lal);
+                return _medlist;
+            }
+        }
+
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
@@ -48,13 +72,22 @@ namespace MastercampProjectG139
             loginScreen.Show();
             this.Close();
         }
+
+
+
         private void GetOrdo(object sender, RoutedEventArgs e)
         {
             DatabaseCommand databaseCommand = new DatabaseCommand();
             numSS = txtBox_numSSPatient.Text;
             code = txtBox_codePatient.Text;
             databaseCommand.getOrdonnance(pharmacien, numSS, code, _ordoP);
+            _medlist = Medlist();
+            pharatio.ItemsSource = _medlist;
+            numSS = "";
+            code = "";
+
         }
+
 
         private void About_Click(object sender, RoutedEventArgs e)
         {
