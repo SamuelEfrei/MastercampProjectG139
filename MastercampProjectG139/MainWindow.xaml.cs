@@ -69,7 +69,7 @@ namespace MastercampProjectG139
                 mail.From = new MailAddress("ordonline-project@laposte.net");  //définition de l'expediteur du mail
                 mail.To.Add(txtBox_mailPatient.Text);  //défintion du destinataire du mail
                 mail.Subject = "Votre ordonance en ligne.";
-                mail.Body = "Madame, Monsieur,\n\nVeuillez trouver ci-joint votre ordonnance en ligne ainsi que le code à six chiffre à donner à votre phramacien lors du retrait en pharmacie.\n\nCordialement,\n\n\nOrdonline, application d'ordonnances dématérialisées";
+                mail.Body = "Madame, Monsieur,\n\nVeuillez trouver ci-joint votre ordonnance en ligne ainsi que le code à six chiffres à donner à votre phramacien lors du retrait en pharmacie.\n\nCordialement,\n\n\nOrdonline, application d'ordonnances dématérialisées";
 
                 string path = Environment.CurrentDirectory + "\\Ordonnance.pdf";  //selection du path de l'ordonnance
 
