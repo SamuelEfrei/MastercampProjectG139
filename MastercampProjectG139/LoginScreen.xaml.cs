@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 using BCrypt;
+using System.Security.Cryptography;
+using System.IO;
 
 namespace MastercampProjectG139
 {
@@ -60,6 +62,46 @@ namespace MastercampProjectG139
             }
         }
 
+        private string Encrypt(string clearText)    //Encryption de texte
+        {
+            string EncryptionKey = "H179Z0GWNA4JG1J";   //Clé utilisée pour encrypter et décrypter infos avant de les envoyer vers bdd
+            byte[] clearBytes = Encoding.Unicode.GetBytes(clearText);   //Conversion du string en bytes
+            using (Aes encryptor = Aes.Create())
+            {
+                Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(EncryptionKey, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
+                encryptor.Key = pdb.GetBytes(32);
+                encryptor.IV = pdb.GetBytes(16);
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    using (CryptoStream cs = new CryptoStream(ms, encryptor.CreateEncryptor(), CryptoStreamMode.Write))
+                    {
+                        cs.Write(clearBytes, 0, clearBytes.Length);
+                        cs.Close();
+                    }
+                    clearText = Convert.ToBase64String(ms.ToArray());   //Conversion des bytes en string
+                }
+            }
+            return clearText;
+        }
+        private void SetNumSS(string user) //Fonction pour modifier un numéro de sécurité sociale (numSS)
+        {
+            string pwd = "$2a$11$jw52E8EggbrAMnbIPL5xV.EKa2RlLvN3x1Ae8e6HPs5KD409cwEua";
+            String connectionString = conf.DbConnectionString;
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            {
+                if (connection.State == System.Data.ConnectionState.Closed)
+                    connection.Open();
+                String query = "UPDATE PersonnelSante SET numSSPersonnel=@parm1 WHERE mdp=@parm2";
+                MySqlCommand mySqlCmd = new MySqlCommand(query, connection);
+                mySqlCmd.CommandType = System.Data.CommandType.Text;
+                mySqlCmd.Parameters.Add("@parm1", MySqlDbType.VarChar);
+                mySqlCmd.Parameters.Add("@parm2", MySqlDbType.VarChar);
+                mySqlCmd.Parameters["@parm1"].Value = Encrypt(user);
+                mySqlCmd.Parameters["@parm2"].Value = pwd;
+                mySqlCmd.ExecuteNonQuery();
+            }
+        }
+
         private void BtnSubmit_Click(object sender, RoutedEventArgs e)  
         {
             if(txtNumSecu.Text != "" && txtPwd.Password != null)
@@ -77,19 +119,6 @@ namespace MastercampProjectG139
         //Fonction pour passer de fenêtre login à autre fenêtre quand utilisateur clique sur "connexion" ou sur la touche Entrée
         private void loginUser()
         {
-            //Fonction pour modifier un mdp (suite)
-            /*try
-            {
-                SetPassword(txtNumSecu.Text, txtPwd.Password);
-                MainWindow dashboard = new MainWindow();
-                dashboard.Show();
-                this.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }*/
-
             String connectionString = conf.DbConnectionString; //Paramètres de connexion à la base de données (bdd)
             MySqlConnection connection = new MySqlConnection(connectionString);
 
@@ -110,7 +139,7 @@ namespace MastercampProjectG139
                 MySqlCommand mySqlCmd = new MySqlCommand(query, connection);
 
                 mySqlCmd.CommandType = System.Data.CommandType.Text;
-                mySqlCmd.Parameters.AddWithValue("@Username", txtNumSecu.Text); //Identifiant renseigné ici plutôt que dans requête SQL pour éviter injection SQL malveillante
+                mySqlCmd.Parameters.AddWithValue("@Username", Encrypt(txtNumSecu.Text)); //Identifiant renseigné ici plutôt que dans requête SQL pour éviter injection SQL malveillante
 
                 MySqlDataReader reader = mySqlCmd.ExecuteReader(); //Récupération des arguments demandés
                 while (reader.Read())
@@ -173,6 +202,32 @@ namespace MastercampProjectG139
             {
                 MessageBox.Show(ex.ToString());
             }
+
+            //Fonction pour modifier un mdp (suite)
+            /*try
+            {
+                SetPassword(txtNumSecu.Text, txtPwd.Password);
+                MainWindow dashboard = new MainWindow();
+                dashboard.Show();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }*/
+
+            //Fonction pour modifier numSS (suite)
+            /*try
+            {
+                SetNumSS(txtNumSecu.Text);
+                MainWindow dashboard = new MainWindow();
+                dashboard.Show();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }*/
         }
     }
 }
