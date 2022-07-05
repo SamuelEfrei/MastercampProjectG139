@@ -66,30 +66,28 @@ namespace MastercampProjectG139
             {
                 MailMessage mail = new MailMessage();
                 SmtpClient smtp = new SmtpClient("smtp.laposte.net");
-                mail.From = new MailAddress("ordonline-project@laposte.net");
-                mail.To.Add(txtBox_mailPatient.Text);
+                mail.From = new MailAddress("ordonline-project@laposte.net");  //définition de l'expediteur du mail
+                mail.To.Add(txtBox_mailPatient.Text);  //défintion du destinataire du mail
                 mail.Subject = "Votre ordonance en ligne.";
                 mail.Body = "Madame, Monsieur,\n\nVeuillez trouver ci-joint votre ordonnance en ligne ainsi que le code à six chiffre à donner à votre phramacien lors du retrait en pharmacie.\n\nCordialement,\n\n\nOrdonline, application d'ordonnances dématérialisées";
 
-                string path = Environment.CurrentDirectory + "\\Ordonnance.pdf";
+                string path = Environment.CurrentDirectory + "\\Ordonnance.pdf";  //selection du path de l'ordonnance
 
                 System.Net.Mail.Attachment attachment;
                 attachment = new System.Net.Mail.Attachment(path);
-                mail.Attachments.Add(attachment);
+                mail.Attachments.Add(attachment);  //ajout de l'ordonnance en pièce jointe
 
                 smtp.Port = 587;
                 smtp.Credentials = new System.Net.NetworkCredential("ordonline-project@laposte.net", "Groupe139!!!");
                 smtp.EnableSsl = true;
-                smtp.Send(mail);
-                MessageBox.Show("Le mail a bien été envoyé.", "Mail envoyé", MessageBoxButton.OK);
+                smtp.Send(mail);  //envoi du mail
+                MessageBox.Show("Le mail a bien été envoyé.", "Mail envoyé", MessageBoxButton.OK);  //message affirmant le bon envoi du mail
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
             ResetFields();
-            //Application.Current.Shutdown();
         }
 
         private void Logout(object sender, RoutedEventArgs e)
