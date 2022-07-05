@@ -11,10 +11,20 @@ namespace MastercampProjectG139.Models
         private readonly MedList _medList;
         private string Name { get; }
 
+        private int code { get; }
+
+        public int GenerateCode()
+        {
+            Random rand = new Random();
+            int code = rand.Next(1, 999999);
+            return code;
+        }
+
         public ModelOrdonnance(string name)
         {
             _medList = new MedList();
             Name = name;
+            this.code = GenerateCode();
         }
 
         public IEnumerable<ModelMedicament> GetAllMedicaments()
@@ -27,9 +37,14 @@ namespace MastercampProjectG139.Models
             _medList.RemoveAllMedicaments();
         }
 
-        public async Task AddMed(ModelMedicament medicament)
+        public void AddMed(ModelMedicament medicament)
         {
             _medList.AddMedicament(medicament);
+        }
+
+        public int getCode()
+        {
+            return code;
         }
     }
 }

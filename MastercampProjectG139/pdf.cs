@@ -17,16 +17,12 @@ namespace MastercampProjectG139
 {
     internal class PDF
     {
-        private Medecin medecin;
-        private ModelOrdonnance ordo;
 
 
         public void GeneratePDF(Medecin medecin, ModelOrdonnance ordo)
         {
             PdfDocument doc = new PdfDocument();
             PdfPage page = doc.AddPage();
-            this.medecin = medecin;
-            this.ordo = ordo;
 
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             doc.Info.Title = "ratio";
@@ -58,8 +54,9 @@ namespace MastercampProjectG139
             gfx.DrawString("Signature tampon etc", font, XBrushes.Black,
             new XRect(50, -50, page.Width, page.Height), XStringFormats.BottomLeft);
 
-            gfx.DrawString("Ptit code", font, XBrushes.Black,
-            new XRect(-50, -50, page.Width, page.Height), XStringFormats.BottomRight);
+            gfx.DrawString(ordo.getCode().ToString("000000"), font, XBrushes.Black,
+            new XRect(-50, -50, page.Width, page.Height), XStringFormats.BottomRight); ;
+            Console.WriteLine(ordo.getCode());
 
 
 
