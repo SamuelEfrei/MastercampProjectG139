@@ -42,10 +42,13 @@ namespace MastercampProjectG139
 
         }
 
+        //Création de la liste qui permet d'afficher les médicaments sur l'appli
         public ObservableCollection<ModelMedicament> Medlist()
         {
+            //On crée une liste qui chope tous les medocs
             IEnumerable<ModelMedicament> lal = _ordoP.GetAllMedicaments();
             if (lal!=null) {
+                //si jamais elle est pas vide (car déja utilisée auparavant), on la vide et la re-remplie avec les nouveaux médocs 
                 lal = Enumerable.Empty<ModelMedicament>();
                 lal = _ordoP.GetAllMedicaments();
                 _medlist = new ObservableCollection<ModelMedicament>(lal);
@@ -55,6 +58,7 @@ namespace MastercampProjectG139
             }
             else
             {
+                //sinon on l'a remplie normalement
                 _medlist = new ObservableCollection<ModelMedicament>(lal);
                 return _medlist;
             }
@@ -77,11 +81,14 @@ namespace MastercampProjectG139
 
         private void GetOrdo(object sender, RoutedEventArgs e)
         {
+            //On ouvre une connexion à la base de données pour récupérer les donnnées
             DatabaseCommand databaseCommand = new DatabaseCommand();
             numSS = txtBox_numSSPatient.Text;
             code = txtBox_codePatient.Text;
             databaseCommand.getOrdonnance(pharmacien, numSS, code, _ordoP);
+            // On remplie la liste contenant les medocs
             _medlist = Medlist();
+            //On affiche ces beaux médicaments
             pharatio.ItemsSource = _medlist;
             numSS = "";
             code = "";
