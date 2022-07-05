@@ -45,7 +45,7 @@
                     <TextBox  Grid.Column="1" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Quantité" Cursor="Arrow" Text="{Binding Frequence, UpdateSourceTrigger=PropertyChanged}" Margin="10 0 10 0" />
                     
                     <TextBox x:Name="txtBox_dureeTraitement" Width="100" Grid.Column="2" materialDesign:HintAssist.Hint="Combien de jours ?" VerticalAlignment="Center" Cursor="Arrow" Text="{Binding Duration, UpdateSourceTrigger=PropertyChanged}"/>
-                    <CheckBox x:Name="checkbox_appelerMedecin" Content="Besoin d'appeler le médecin" Grid.Column="3" VerticalAlignment="Center" />
+                    
                 </Grid>
                 <StackPanel Grid.Row="3"
                             Margin="10 10 10 0">

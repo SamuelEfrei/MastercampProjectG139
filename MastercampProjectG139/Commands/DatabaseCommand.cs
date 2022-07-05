@@ -161,7 +161,7 @@ namespace MastercampProjectG139.Commands
                     {
                        
                         //MessageBox.Show((string)reader2["nom"], "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                        ModelMedicament medicament = new ModelMedicament((int)reader2["idMedic"], (string)reader2["nom"], (string)reader2["quantiteParJour"] , (string)reader2["dureeMedicament"]);
+                        ModelMedicament medicament = new ModelMedicament((int)reader2["idMedic"], (string)reader2["nom"], Decrypt((string)reader2["quantiteParJour"]) , Decrypt((string)reader2["dureeMedicament"]));
 
                         _ordoP.AddMed(medicament);
                     }

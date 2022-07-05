@@ -46,7 +46,8 @@ namespace MastercampProjectG139.Commands
             Config conf = new Config();
             String connectionString = conf.DbConnectionString;
             MySqlConnection connection = new MySqlConnection(connectionString);
-            int idMed = 0;
+            int idMed = -1;
+            bool medExist = true;
             {
                 try
                 {
@@ -62,6 +63,10 @@ namespace MastercampProjectG139.Commands
                     {
                         idMed = (int)reader["idMedic"];
                     }
+                    if(idMed == -1)
+                    {
+                        medExist = false;
+                    }
                     reader.Close();
                 }
                 catch (Exception e)
@@ -69,22 +74,29 @@ namespace MastercampProjectG139.Commands
                     MessageBox.Show(e.ToString());
                 }
             }
-
-            ModelMedicament medicament = new ModelMedicament(idMed, _addMedViewModel.Name, _addMedViewModel.Frequence, _addMedViewModel.Duration);
-            try
+            if (medExist)
             {
-                //Le nouveau "medicament" est ajouté à la liste "_ordonnance"
-                _ordonnance.AddMed(medicament);
-              
-                //Supprimer la MessageBox si jamais cela vous gêne durant les tests
-                MessageBox.Show("Le médicament a été ajouté", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                _medicamentViewNavigationService.Navigate();
+                ModelMedicament medicament = new ModelMedicament(idMed, _addMedViewModel.Name, _addMedViewModel.Frequence, _addMedViewModel.Duration);
+                try
+                {
+                    //Le nouveau "medicament" est ajouté à la liste "_ordonnance"
+                    _ordonnance.AddMed(medicament);
 
+                    //Supprimer la MessageBox si jamais cela vous gêne durant les tests
+                    MessageBox.Show("Le médicament a été ajouté", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    _medicamentViewNavigationService.Navigate();
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ratio Declined", "Error",
+                        MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
-            catch (Exception)
+            else
             {
-                MessageBox.Show("Ratio Declined", "Error",
-                    MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Ce médicament n'existe pas dans la base de données", "Error",
+                        MessageBoxButton.OK, MessageBoxImage.Error);
             }
             
         }
