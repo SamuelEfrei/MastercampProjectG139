@@ -31,11 +31,13 @@ Pour éviter des erreurs de connexion au démarrage de l'application, renseignez
 
 # Démarrer l'application
 Pour démarrer l'application, exécutez le fichier MastercampProjectG139.exe joint dans le dossier ZIP. Ne supprimez ni modifiez aucune DLL.
+Utilisez les identifiants dans la section ci-après pour vous connecter et accéder aux différentes vues (médecin ou pharmacien) selon l'utilisateur que vous utiliserez.
 
 # Utiliser l'application
-Vous devrez vous connecter lorsque l'application aura démarrée. Les mots de passe des 5 personnels de santé exemples de la BDD sont :
-- admin1 pour Samuel DELASSUS
-- admin2 pour Baptiste BALBI
-- admin3 pour Antoine LACHAUD
-- admin4 pour Daiyan COSTILHES
-- admin5 pour Sébastien LATRONCHE
+Vous devrez vous connecter lorsque l'application aura démarrée. Les identifiants des 5 personnels de santé de la BDD sont :
+-   Numéro SS   |  MDP   |  Métier | Prénom NOM
+- 1334527161492 | admin1 | MEDECIN | Samuel DELASSUS
+- 4341982456785 | admin2 | MEDECIN | Baptiste BALBI
+- 1346248675312 | admin3 | PHARMAC | Antoine LACHAUD
+- 4364512346521 | admin4 | MEDECIN | Daiyan COSTILHES
+- 6153245687521 | admin5 | PHARMAC | Sébastien LATRONCHE
