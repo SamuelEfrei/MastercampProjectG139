@@ -76,7 +76,7 @@ namespace MastercampProjectG139.Commands
             }
             if (medExist)
             {
-                ModelMedicament medicament = new ModelMedicament(idMed, _addMedViewModel.Name, _addMedViewModel.Frequence, _addMedViewModel.Duration);
+                ModelMedicament medicament = new ModelMedicament(idMed, _addMedViewModel.Name, _addMedViewModel.Frequence, _addMedViewModel.Duration, _addMedViewModel.Status);
                 try
                 {
                     //Le nouveau "medicament" est ajouté à la liste "_ordonnance"

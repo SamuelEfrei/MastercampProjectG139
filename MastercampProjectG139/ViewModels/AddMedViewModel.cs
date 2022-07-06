@@ -71,6 +71,20 @@ namespace MastercampProjectG139.ViewModels
                 OnPropertyChanged(nameof(Duration));
             }
         }
+
+        private bool _status;
+        public bool Status
+        {
+            get
+            {
+                return _status;
+            }
+            set
+            {
+                _status = value;
+                OnPropertyChanged(nameof(Status));
+            }
+        }
         public ObservableCollection<string> MedItems { get; set; }
 
         public void getMed()

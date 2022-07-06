@@ -1,6 +1,7 @@
 ﻿using MastercampProjectG139.Commands;
 using MastercampProjectG139.Models;
 using MastercampProjectG139.ViewModels;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -92,15 +93,42 @@ namespace MastercampProjectG139
             pharatio.ItemsSource = _medlist;
             numSS = "";
             code = "";
-
         }
-
 
         private void About_Click(object sender, RoutedEventArgs e)
         {
             About about = new About();
             about.Topmost = true;
             about.Show();
+        }
+
+        private void btn_updateOrdo_Click(object sender, RoutedEventArgs e)
+        {
+            string medName = "";
+            string medFreq = ""; //Fréquence du médicament
+            string medDur = "";  //Durée du traitement
+            CheckBox cb;
+            TextBlock tb;
+
+            foreach(ListViewItem med in pharatio.Items)
+            {
+                cb = (CheckBox)med.FindName("med_checkbox"); //On récupère la checkbox et on vérifie sa valeur
+                if(cb.IsChecked == true)
+                {
+                    //On assigne les différentes valeurs
+                    tb = (TextBlock)med.FindName("med_name");
+                    medName = tb.Text;
+
+                    tb = (TextBlock)med.FindName("med_freq");
+                    medFreq = tb.Text;
+
+                    tb = (TextBlock)med.FindName("med_duration");
+                    medDur = tb.Text;
+                }
+            }
+
+            Config conf = new Config();
+            MySqlConnection conn = new MySqlConnection(conf.DbConnectionString);
         }
     }
 }

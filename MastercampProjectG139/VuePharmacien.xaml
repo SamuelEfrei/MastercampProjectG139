@@ -53,10 +53,10 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding Name}" Margin="3,0"/>
-                                <TextBlock Text="{Binding Frequence}" Margin="3,0"/>
-                                <TextBlock Text="{Binding Duration}" Margin="3,0"/>
-                                <CheckBox IsChecked="False" Margin="3,0"/>
+                                <TextBlock Text="{Binding Name}" Margin="3,0" x:Name="med_name"/>
+                                <TextBlock Text="{Binding Frequence}" Margin="3,0" x:Name="med_freq"/>
+                                <TextBlock Text="{Binding Duration}" Margin="3,0" x:Name="med_duration"/>
+                                <CheckBox x:Name="med_checkbox" IsChecked="False" Margin="3,0"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
@@ -76,7 +76,7 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Button x:Name="btn_logOut" Background="IndianRed" Content="Se déconnecter" Click="Logout" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="0" Width="auto" Cursor="Hand" />
-                <Button x:Name="btn_updateOrdo" Content="Mettre à jour l'ordonnance" Grid.Column="1" Grid.Row="0" Width="auto" HorizontalAlignment="Right" />
+                <Button x:Name="btn_updateOrdo" Click="btn_updateOrdo_Click" Content="Mettre à jour l'ordonnance" Grid.Column="1" Grid.Row="0" Width="auto" HorizontalAlignment="Right" />
             </Grid>
         </StackPanel>
     </StackPanel>

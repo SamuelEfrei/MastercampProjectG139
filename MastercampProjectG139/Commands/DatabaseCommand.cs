@@ -76,7 +76,7 @@ namespace MastercampProjectG139.Commands
 
                 String query2 = "SELECT idOrdo FROM Ordonnance WHERE idOrdo =(SELECT LAST_INSERT_ID())";
               
-                String query3 = "INSERT INTO MedicamentOrdonnance VALUES(@idO,@idM,@duree,@qty)";
+                String query3 = "INSERT INTO MedicamentOrdonnance VALUES(@idO,@idM,@duree,@qty,@status)";
 
                 //insert dans la db Ordonnance
                 MySqlCommand mySqlCmd = new MySqlCommand(query, connection);
@@ -107,6 +107,7 @@ namespace MastercampProjectG139.Commands
                     mySqlCmd2.Parameters.AddWithValue("@idM", med.Id);
                     mySqlCmd2.Parameters.AddWithValue("@duree", Encrypt(med.Duration));
                     mySqlCmd2.Parameters.AddWithValue("@qty", Encrypt(med.Frequence));
+                    mySqlCmd2.Parameters.AddWithValue("@status", false);
                     mySqlCmd2.ExecuteNonQuery();
                 }
                 
@@ -162,7 +163,7 @@ namespace MastercampProjectG139.Commands
                     {
                        
                         //MessageBox.Show((string)reader2["nom"], "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                        ModelMedicament medicament = new ModelMedicament((int)reader2["idMedic"], (string)reader2["nom"], Decrypt((string)reader2["quantiteParJour"]) , Decrypt((string)reader2["dureeMedicament"]));
+                        ModelMedicament medicament = new ModelMedicament((int)reader2["idMedic"], (string)reader2["nom"], Decrypt((string)reader2["quantiteParJour"]) , Decrypt((string)reader2["dureeMedicament"]), (bool)reader2["status"]);
 
                         _ordoP.AddMed(medicament);
                     }
