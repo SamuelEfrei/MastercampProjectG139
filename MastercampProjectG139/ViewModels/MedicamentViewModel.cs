@@ -15,11 +15,11 @@ namespace MastercampProjectG139.ViewModels
         public string Frequence => _ordonnance.Frequence.ToString();
 
         public string Duration => _ordonnance.Duration.ToString();
+        public bool Status => _ordonnance.Status;
 
         public MedicamentViewModel(ModelMedicament ordonnance)
         {
             _ordonnance = ordonnance;
-            
         }
     }
 }

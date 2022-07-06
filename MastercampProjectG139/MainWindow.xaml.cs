@@ -85,6 +85,7 @@ namespace MastercampProjectG139
                     attachment = new System.Net.Mail.Attachment(path);
                     mail.Attachments.Add(attachment);  //ajout de l'ordonnance en pièce jointe
 
+                    //Paramètres du mail (port, identifiants, SSL sécurisé etc)
                     smtp.Port = 587;
                     smtp.Credentials = new System.Net.NetworkCredential("ordonline-project@laposte.net", "Groupe139!!!");
                     smtp.EnableSsl = true;

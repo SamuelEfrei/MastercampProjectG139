@@ -20,6 +20,18 @@ namespace MastercampProjectG139.Models
             return _medicaments;
         }
 
+        //Retourne tous les médicaments dont le status est FALSE
+        public IEnumerable<ModelMedicament> GetNonDistributedMedicaments()
+        {
+            List<ModelMedicament> _medicamentsNonDistribues = new List<ModelMedicament>();
+            foreach(ModelMedicament med in _medicaments)
+            {
+                if(med.Status == false)
+                    _medicamentsNonDistribues.Add(med);
+            }
+            return _medicamentsNonDistribues;
+        }
+
         public void AddMedicament(ModelMedicament medicament)
         {
             _medicaments.Add(medicament);

@@ -17,8 +17,6 @@ namespace MastercampProjectG139
 {
     internal class PDF
     {
-
-
         public void GeneratePDF(Medecin medecin, ModelOrdonnance ordo)
         {
             PdfDocument doc = new PdfDocument();
@@ -48,8 +46,6 @@ namespace MastercampProjectG139
                 new XRect(0, marge, page.Width, page.Height), XStringFormats.Center);                
                 marge+=30;
             }
-
-
 
             gfx.DrawString("Signature tampon etc", font, XBrushes.Black,
             new XRect(50, -50, page.Width, page.Height), XStringFormats.BottomLeft);
