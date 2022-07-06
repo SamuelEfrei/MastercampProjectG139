@@ -67,6 +67,8 @@ namespace MastercampProjectG139.Commands
                     {
                         medExist = false;
                     }
+                    
+                    
                     reader.Close();
                 }
                 catch (Exception e)
@@ -74,7 +76,14 @@ namespace MastercampProjectG139.Commands
                     MessageBox.Show(e.ToString());
                 }
             }
-            if (medExist)
+            List<string> names = new List<string>();
+            foreach(ModelMedicament medicament1 in _ordonnance.GetAllMedicaments())
+            {
+                names.Add(medicament1.Name);
+            }
+            bool medInList = names.AsQueryable().Contains(_addMedViewModel.Name);
+            
+            if (medExist && !medInList)
             {
                 ModelMedicament medicament = new ModelMedicament(idMed, _addMedViewModel.Name, _addMedViewModel.Frequence, _addMedViewModel.Duration, _addMedViewModel.Status, _addMedViewModel.IdOrdo);
                 try
@@ -89,14 +98,24 @@ namespace MastercampProjectG139.Commands
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Ratio Declined", "Error",
+                    MessageBox.Show("Erreur", "Error",
                         MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
-            else
+            else if(!medExist)
             {
                 MessageBox.Show("Ce médicament n'existe pas dans la base de données", "Error",
                         MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else if (medInList)
+            {
+                MessageBox.Show("Vous avez déjà ajouté ce médicament à l'ordonnance", "Error",
+                       MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                MessageBox.Show("Une erreur s'est produite", "Error",
+                       MessageBoxButton.OK, MessageBoxImage.Error);
             }
             
         }
