@@ -59,12 +59,12 @@ namespace MastercampProjectG139.Commands
             }
             return cipherText;
         }
-        public void OrdoSubmit(Medecin medecin, ModelOrdonnance ordonnance, string numSS)
+        public void OrdoSubmit(Medecin medecin, ModelOrdonnance ordonnance, string numSS, string scode)
         {
             //Génère un nombre aléatoire à 6 chiffres
-            int code = ordonnance.getCode();
+            //int code = ordonnance.getCode();
             //Permet de générer des nombres comme 000123
-            String scode = code.ToString("000000");
+            //String scode = code.ToString("000000");
 
             Config conf = new Config();
             String connectionString = conf.DbConnectionString;

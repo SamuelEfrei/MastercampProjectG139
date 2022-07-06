@@ -17,7 +17,7 @@ namespace MastercampProjectG139
 {
     internal class PDF
     {
-        public void GeneratePDF(Medecin medecin, ModelOrdonnance ordo)
+        public void GeneratePDF(Medecin medecin, ModelOrdonnance ordo, string scode)
         {
             PdfDocument doc = new PdfDocument();
             PdfPage page = doc.AddPage();
@@ -50,9 +50,10 @@ namespace MastercampProjectG139
             gfx.DrawString("Signature tampon etc", font, XBrushes.Black,
             new XRect(50, -50, page.Width, page.Height), XStringFormats.BottomLeft);
             //On display le code dans l'ordonnance pour que le pharmacien puisse la récupérer
-            gfx.DrawString(ordo.getCode().ToString("000000"), font, XBrushes.Black,
+            //gfx.DrawString(ordo.getCode().ToString("000000"), font, XBrushes.Black,
+            gfx.DrawString(scode, font, XBrushes.Black,
             new XRect(-50, -50, page.Width, page.Height), XStringFormats.BottomRight); ;
-            Console.WriteLine(ordo.getCode());
+            //Console.WriteLine(ordo.getCode());
 
 
 

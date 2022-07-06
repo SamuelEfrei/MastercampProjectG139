@@ -54,6 +54,13 @@ namespace MastercampProjectG139
             Application.Current.Shutdown();
         }
 
+        public string GenerateCode()
+        {
+            Random rand = new Random();
+            int code = rand.Next(1, 999999);
+            String scode = code.ToString("000000");
+            return scode;
+        }
         private void pdfratio(object sender, RoutedEventArgs e)
         {
             NumeroINSEE numeroINSEE = new NumeroINSEE();
@@ -63,12 +70,12 @@ namespace MastercampProjectG139
             if (numeroINSEE.VerifierINSEE(numSS) && IsValidEmail(txtBox_mailPatient.Text))
             {
 
-
+                string scode = GenerateCode();
                 PDF ratio = new PDF();
-                ratio.GeneratePDF(medecin, _ordonnance);
+                ratio.GeneratePDF(medecin, _ordonnance, scode);
                 DatabaseCommand databaseCommand = new DatabaseCommand();
 
-                databaseCommand.OrdoSubmit(medecin, _ordonnance, numSS);
+                databaseCommand.OrdoSubmit(medecin, _ordonnance, numSS, scode);
 
                 try
                 {
