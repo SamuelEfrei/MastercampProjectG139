@@ -153,11 +153,10 @@ namespace MastercampProjectG139.Commands
                              
                     while (reader2.Read())
                     {
-                        //MessageBox.Show((string)reader2["nom"], "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                         ModelMedicament medicament = new ModelMedicament((int)reader2["idMedic"], (string)reader2["nom"], Decrypt((string)reader2["quantiteParJour"]) , Decrypt((string)reader2["dureeMedicament"]), (bool)reader2["status"], idOrdo);
-
                         _ordoP.AddMed(medicament);
                     }
+
                     reader2.Close();
                 }
                 connection.Close();

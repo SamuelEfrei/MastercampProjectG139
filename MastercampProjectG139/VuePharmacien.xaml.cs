@@ -116,7 +116,7 @@ namespace MastercampProjectG139
             _medlist = Medlist();
             //On affiche ces beaux médicaments
             pharatio.ItemsSource = _medlist;
-            if(!refresh)
+            if(!refresh && txtBox_codePatient.Text != "" && txtBox_numSSPatient.Text != "")
                 MessageBox.Show("Ordonnance Récupérée", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 

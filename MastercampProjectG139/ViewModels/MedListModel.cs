@@ -28,7 +28,6 @@ namespace MastercampProjectG139.ViewModels
           
             
             UpdateMedicaments();
-
         }
 
         public void UpdateMedicaments()

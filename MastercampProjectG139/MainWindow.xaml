@@ -80,7 +80,7 @@
 
                 <Button x:Name="btn_logOut" Background="IndianRed" Content="Se déconnecter" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="0" Width="auto" Click="Logout" BorderBrush="IndianRed" Cursor="Hand" />
                 <TextBox x:Name="txtBox_mailPatient" Grid.Column="1" materialDesign:HintAssist.Hint="Adresse mail du patient" Width="130" VerticalAlignment="Center" HorizontalAlignment="Right" />
-                <TextBox x:Name="txtBox_numSSPatient" Grid.Column="2" MaxLength="13" materialDesign:HintAssist.Hint="Numéro de sécurité sociale du patient" Width="210" VerticalAlignment="Center" Cursor="Arrow" />
+                <TextBox x:Name="txtBox_numSSPatient" Grid.Column="2" MaxLength="15" materialDesign:HintAssist.Hint="Numéro de sécurité sociale du patient" Width="210" VerticalAlignment="Center" Cursor="Arrow" />
                 <Button x:Name="btn_validate" Content="Valider" Grid.Column="3" Grid.Row="0" Width="auto" Click="pdfratio" />
             </Grid>
         </DockPanel>
