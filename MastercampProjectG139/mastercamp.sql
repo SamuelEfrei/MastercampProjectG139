@@ -77,13 +77,14 @@ insert into Ordonnance values (2, 000001, 4364122336521, 2, 2);
 CREATE TABLE MedicamentOrdonnance(
    idOrdo INT,
    idMedic INT,
-   dureeMedicament VARCHAR(250),
-   quantiteParJour VARCHAR(250),
+   dureeMedicament VARCHAR(200),
+   quantiteParJour VARCHAR(200),
+   status BOOLEAN,
    PRIMARY KEY(idOrdo, idMedic),
    FOREIGN KEY(idOrdo) REFERENCES Ordonnance(idOrdo),
    FOREIGN KEY(idMedic) REFERENCES Medicament(idMedic)
 );
 
-insert into MedicamentOrdonnance values (1, 1, 'pendant 7 ans', '87 par jour');
-insert into MedicamentOrdonnance values (2, 10, 'pendant 1 mois', '4Litre par jour');
-insert into MedicamentOrdonnance values (2, 8, 'pendant 2 semaines', '7 par jour');
+insert into MedicamentOrdonnance values (1, 1, 'pendant 7 ans', '87 par jour', false);
+insert into MedicamentOrdonnance values (2, 10, 'pendant 1 mois', '4Litre par jour', false);
+insert into MedicamentOrdonnance values (2, 8, 'pendant 2 semaines', '7 par jour',false);
