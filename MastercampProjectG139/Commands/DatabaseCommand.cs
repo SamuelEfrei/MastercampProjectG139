@@ -120,7 +120,7 @@ namespace MastercampProjectG139.Commands
             numSS = numSS.Replace(" ", "");
             Config conf = new Config();
             String connectionString = conf.DbConnectionString;
-            //MessageBox.Show(numSS + " " + code, "Error", MessageBoxButton.OK, MessageBoxImage.Information);
+
             MySqlConnection connection = new MySqlConnection(connectionString);
             {
                 if (connection.State == System.Data.ConnectionState.Closed)
@@ -162,11 +162,6 @@ namespace MastercampProjectG139.Commands
                     reader2.Close();
                 }
                 connection.Close();
-
-            //catch(Exception e)
-            //{
-            //    MessageBox.Show("Vous n'avez pas rentrer les bons identifiantsa", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            //}
             }
         }
     }

@@ -31,7 +31,7 @@ namespace MastercampProjectG139
         private readonly ModelOrdonnance _ordoP;
         public ObservableCollection<ModelMedicament> _medlist;
 
-
+        #region VuePharmacien-init
         public VuePharmacien() => InitializeComponent();
 
         public VuePharmacien(Pharmacien pharmacien)
@@ -42,6 +42,7 @@ namespace MastercampProjectG139
             _ordoP = new ModelOrdonnance("Ordonnance Pharmacien");
 
         }
+        #endregion
 
         //Création de la liste qui permet d'afficher les médicaments sur l'appli
         public ObservableCollection<ModelMedicament> Medlist()
@@ -64,7 +65,7 @@ namespace MastercampProjectG139
             }
         }
 
-
+        #region Buttons
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
@@ -76,8 +77,6 @@ namespace MastercampProjectG139
             loginScreen.Show();
             this.Close();
         }
-
-
 
         private void GetOrdo(object sender, RoutedEventArgs e)
         {
@@ -107,6 +106,7 @@ namespace MastercampProjectG139
         {
             UpdateOrdo();
         }
+        #endregion
 
         //Met à jour l'ordonnance en actualisant le status de chaque médicament
         private void UpdateOrdo()
@@ -138,6 +138,7 @@ namespace MastercampProjectG139
                     conn.Close();
                 }
             }
+            //Insérer ici les fonctions pour refresh
         }
     }
 }
