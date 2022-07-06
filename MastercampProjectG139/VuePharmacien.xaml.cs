@@ -78,21 +78,9 @@ namespace MastercampProjectG139
             this.Close();
         }
 
-        private void GetOrdo(object sender, RoutedEventArgs e)
+        private void btn_getOrdo_Click(object sender, RoutedEventArgs e)
         {
-            //On ouvre une connexion à la base de données pour récupérer les donnnées
-            DatabaseCommand databaseCommand = new DatabaseCommand();
-            numSS = txtBox_numSSPatient.Text;
-            code = txtBox_codePatient.Text;
-            databaseCommand.getOrdonnance(pharmacien, numSS, code, _ordoP);
-            // On remplie la liste contenant les medocs
-            _medlist = Medlist();
-            //On affiche ces beaux médicaments
-            pharatio.ItemsSource = _medlist;
-
-            //On reset les champs
-            txtBox_numSSPatient.Text = "";
-            txtBox_codePatient.Text = "";
+            GetOrdo(false);
         }
 
         private void About_Click(object sender, RoutedEventArgs e)
@@ -107,6 +95,30 @@ namespace MastercampProjectG139
             UpdateOrdo();
         }
         #endregion
+
+
+        private void GetOrdo(bool refresh)
+        {
+            //On ouvre une connexion à la base de données pour récupérer les donnnées
+            DatabaseCommand databaseCommand = new DatabaseCommand();
+            if(!refresh)
+            {
+                numSS = txtBox_numSSPatient.Text;
+                code = txtBox_codePatient.Text;
+
+                //On reset les champs
+                txtBox_numSSPatient.Text = "";
+                txtBox_codePatient.Text = "";
+            }
+            
+            databaseCommand.getOrdonnance(pharmacien, numSS, code, _ordoP);
+            // On remplie la liste contenant les medocs
+            _medlist = Medlist();
+            //On affiche ces beaux médicaments
+            pharatio.ItemsSource = _medlist;
+            if(!refresh)
+                MessageBox.Show("Ordonnance Récupérée", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
 
         //Met à jour l'ordonnance en actualisant le status de chaque médicament
         private void UpdateOrdo()
@@ -140,6 +152,7 @@ namespace MastercampProjectG139
                 }
             }
             //Insérer ici les fonctions pour refresh
+            GetOrdo(true);
         }
     }
 }

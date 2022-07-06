@@ -146,7 +146,6 @@ namespace MastercampProjectG139.Commands
                 }
                 else
                 {
-                    MessageBox.Show("Ordonnance Récupérée", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                     MySqlCommand mySqlCmd2 = new MySqlCommand(query2, connection);
                     mySqlCmd2.CommandType = System.Data.CommandType.Text;
                     mySqlCmd2.Parameters.AddWithValue("@idO", idOrdo);
