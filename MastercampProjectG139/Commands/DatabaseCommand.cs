@@ -98,7 +98,6 @@ namespace MastercampProjectG139.Commands
                 
                 
                 //insert la liste des médicaments dans la db
-                
                 foreach(ModelMedicament med in ordonnance.GetAllMedicaments())
                 {
                     MySqlCommand mySqlCmd2 = new MySqlCommand(query3, connection);
@@ -110,11 +109,6 @@ namespace MastercampProjectG139.Commands
                     mySqlCmd2.Parameters.AddWithValue("@status", false);
                     mySqlCmd2.ExecuteNonQuery();
                 }
-                
-               
- 
-
-                
             }
         }
 
@@ -129,52 +123,50 @@ namespace MastercampProjectG139.Commands
             //MessageBox.Show(numSS + " " + code, "Error", MessageBoxButton.OK, MessageBoxImage.Information);
             MySqlConnection connection = new MySqlConnection(connectionString);
             {
-                
-                    if (connection.State == System.Data.ConnectionState.Closed)
-                        connection.Open();
-                    String query = "Select * from Ordonnance where codeSecret = @code AND numSSPatient = @numSS";
-                    MySqlCommand mySqlCmd = new MySqlCommand(query, connection);
-                    mySqlCmd.CommandType = System.Data.CommandType.Text;
-                    mySqlCmd.Parameters.AddWithValue("@code", Encrypt(code));
-                    mySqlCmd.Parameters.AddWithValue("@numSS", Encrypt(numSS));
-                    MySqlDataReader reader = mySqlCmd.ExecuteReader();
-                    while (reader.Read())
+                if (connection.State == System.Data.ConnectionState.Closed)
+                    connection.Open();
+
+                String query = "Select * from Ordonnance where codeSecret = @code AND numSSPatient = @numSS";
+                MySqlCommand mySqlCmd = new MySqlCommand(query, connection);
+                mySqlCmd.CommandType = System.Data.CommandType.Text;
+                mySqlCmd.Parameters.AddWithValue("@code", Encrypt(code));
+                mySqlCmd.Parameters.AddWithValue("@numSS", Encrypt(numSS));
+                MySqlDataReader reader = mySqlCmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    codedb = Decrypt((string)reader["codeSecret"]);
+                    numdb = long.Parse(Decrypt((string)reader["numSSPatient"]));
+                    idOrdo = (int)reader["idOrdo"];
+                }
+                String query2 = "Select mo.*, m.nom from MedicamentOrdonnance mo JOIN Medicament m on mo.idMedic = m.idMedic where mo.idOrdo = @idO";
+                reader.Close();
+                if(codedb == "Erreur" || numdb == -1)
+                {
+                    MessageBox.Show("Vous n'avez pas rentré les bons identifiants", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Ordonnance Récupérée", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MySqlCommand mySqlCmd2 = new MySqlCommand(query2, connection);
+                    mySqlCmd2.CommandType = System.Data.CommandType.Text;
+                    mySqlCmd2.Parameters.AddWithValue("@idO", idOrdo);
+                    MySqlDataReader reader2 = mySqlCmd2.ExecuteReader();
+                             
+                    while (reader2.Read())
                     {
-                        codedb = Decrypt((string)reader["codeSecret"]);
-                        numdb = long.Parse(Decrypt((string)reader["numSSPatient"]));
-                        idOrdo = (int)reader["idOrdo"];
-                    }
-                    String query2 = "Select mo.*, m.nom from MedicamentOrdonnance mo JOIN Medicament m on mo.idMedic = m.idMedic where mo.idOrdo = @idO";
-                    reader.Close();
-                    if(codedb == "Erreur" || numdb == -1)
-                    {
-                        MessageBox.Show("Vous n'avez pas rentré les bons identifiants", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Ordonnance Récupérée", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                        MySqlCommand mySqlCmd2 = new MySqlCommand(query2, connection);
-                        mySqlCmd2.CommandType = System.Data.CommandType.Text;
-                        mySqlCmd2.Parameters.AddWithValue("@idO", idOrdo);
-                        MySqlDataReader reader2 = mySqlCmd2.ExecuteReader();
-                            
-                          
-                        while (reader2.Read())
-                    {
-                       
                         //MessageBox.Show((string)reader2["nom"], "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                        ModelMedicament medicament = new ModelMedicament((int)reader2["idMedic"], (string)reader2["nom"], Decrypt((string)reader2["quantiteParJour"]) , Decrypt((string)reader2["dureeMedicament"]), (bool)reader2["status"]);
+                        ModelMedicament medicament = new ModelMedicament((int)reader2["idMedic"], (string)reader2["nom"], Decrypt((string)reader2["quantiteParJour"]) , Decrypt((string)reader2["dureeMedicament"]), (bool)reader2["status"], idOrdo);
 
                         _ordoP.AddMed(medicament);
                     }
                     reader2.Close();
                 }
-                    
+                connection.Close();
 
-                //catch(Exception e)
-                //{
-                //    MessageBox.Show("Vous n'avez pas rentrer les bons identifiantsa", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                //}
+            //catch(Exception e)
+            //{
+            //    MessageBox.Show("Vous n'avez pas rentrer les bons identifiantsa", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            //}
             }
         }
     }

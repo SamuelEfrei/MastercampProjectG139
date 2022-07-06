@@ -32,6 +32,11 @@ namespace MastercampProjectG139.Models
             return _medList.GetAllMedicaments();
         }
 
+        public IEnumerable<ModelMedicament> GetNonDistributedMedicaments()
+        {
+            return _medList.GetNonDistributedMedicaments();
+        }
+
         public void RemoveAllMedicaments()
         {
             _medList.RemoveAllMedicaments();

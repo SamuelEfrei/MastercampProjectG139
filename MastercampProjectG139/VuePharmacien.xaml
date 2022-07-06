@@ -56,7 +56,7 @@
                                 <TextBlock Text="{Binding Name}" Margin="3,0" x:Name="med_name"/>
                                 <TextBlock Text="{Binding Frequence}" Margin="3,0" x:Name="med_freq"/>
                                 <TextBlock Text="{Binding Duration}" Margin="3,0" x:Name="med_duration"/>
-                                <CheckBox x:Name="med_checkbox" IsChecked="False" Margin="3,0"/>
+                                <CheckBox x:Name="med_checkbox" IsChecked="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem},Path=IsSelected}" Margin="3,0"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>

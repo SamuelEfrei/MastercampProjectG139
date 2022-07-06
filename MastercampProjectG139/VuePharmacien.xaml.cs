@@ -47,20 +47,19 @@ namespace MastercampProjectG139
         public ObservableCollection<ModelMedicament> Medlist()
         {
             //On crée une liste qui chope tous les medocs
-            IEnumerable<ModelMedicament> lal = _ordoP.GetAllMedicaments();
-            if (lal!=null) {
+            IEnumerable<ModelMedicament> medicaments = _ordoP.GetNonDistributedMedicaments();
+            if (medicaments != null) {
                 //si jamais elle est pas vide (car déja utilisée auparavant), on la vide et la re-remplie avec les nouveaux médocs 
-                lal = Enumerable.Empty<ModelMedicament>();
-                lal = _ordoP.GetAllMedicaments();
-                _medlist = new ObservableCollection<ModelMedicament>(lal);
+                medicaments = Enumerable.Empty<ModelMedicament>();
+                medicaments = _ordoP.GetNonDistributedMedicaments();
+                _medlist = new ObservableCollection<ModelMedicament>(medicaments);
                 _ordoP.RemoveAllMedicaments();
                 return _medlist;
-
             }
             else
             {
                 //sinon on l'a remplie normalement
-                _medlist = new ObservableCollection<ModelMedicament>(lal);
+                _medlist = new ObservableCollection<ModelMedicament>(medicaments);
                 return _medlist;
             }
         }
@@ -91,8 +90,10 @@ namespace MastercampProjectG139
             _medlist = Medlist();
             //On affiche ces beaux médicaments
             pharatio.ItemsSource = _medlist;
-            numSS = "";
-            code = "";
+
+            //On reset les champs
+            txtBox_numSSPatient.Text = "";
+            txtBox_codePatient.Text = "";
         }
 
         private void About_Click(object sender, RoutedEventArgs e)
@@ -104,31 +105,39 @@ namespace MastercampProjectG139
 
         private void btn_updateOrdo_Click(object sender, RoutedEventArgs e)
         {
-            string medName = "";
-            string medFreq = ""; //Fréquence du médicament
-            string medDur = "";  //Durée du traitement
+            UpdateOrdo();
+        }
+
+        //Met à jour l'ordonnance en actualisant le status de chaque médicament
+        private void UpdateOrdo()
+        {
+            int idMedic = -1;
+            int idOrdo = -1;
             CheckBox cb;
             TextBlock tb;
+            Config conf = new Config();
 
-            foreach(ListViewItem med in pharatio.Items)
+            foreach (ModelMedicament med in pharatio.SelectedItems)
             {
-                cb = (CheckBox)med.FindName("med_checkbox"); //On récupère la checkbox et on vérifie sa valeur
-                if(cb.IsChecked == true)
+                idMedic = med.Id;
+                idOrdo = med.IdOrdo;
+
+                String connectionString = conf.DbConnectionString;
+                MySqlConnection conn = new MySqlConnection(connectionString);
                 {
-                    //On assigne les différentes valeurs
-                    tb = (TextBlock)med.FindName("med_name");
-                    medName = tb.Text;
+                    if (conn.State == System.Data.ConnectionState.Closed)
+                        conn.Open();
 
-                    tb = (TextBlock)med.FindName("med_freq");
-                    medFreq = tb.Text;
-
-                    tb = (TextBlock)med.FindName("med_duration");
-                    medDur = tb.Text;
+                    //on met à jour l'ordonnance en indiquant quels médicaments ont été délivrés
+                    String query2 = "UPDATE MedicamentOrdonnance SET status=true WHERE idOrdo=@idordo AND idMedic=@idmedic";
+                    MySqlCommand cmd2 = new MySqlCommand(query2, conn);
+                    cmd2.CommandType = System.Data.CommandType.Text;
+                    cmd2.Parameters.AddWithValue("@idordo", idOrdo);
+                    cmd2.Parameters.AddWithValue("@idmedic", idMedic);
+                    cmd2.ExecuteNonQuery();
+                    conn.Close();
                 }
             }
-
-            Config conf = new Config();
-            MySqlConnection conn = new MySqlConnection(conf.DbConnectionString);
         }
     }
 }
