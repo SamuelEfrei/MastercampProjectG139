@@ -8,7 +8,7 @@
         xmlns:viewmodels="clr-namespace:MastercampProjectG139.ViewModels"
         xmlns:views="clr-namespace:MastercampProjectG139.Views"
         mc:Ignorable="d"
-        Title="OrdOnline - Pharmacien" Height="475" Width="800">
+        Title="OrdOnline - Pharmacien" Height="480" Width="800">
 
     
     <StackPanel Orientation="Vertical">
@@ -36,8 +36,8 @@
                     <RowDefinition Height="2*" />
                 </Grid.RowDefinitions>
                 <TextBlock Text="Récupérer une ordonnance" Margin="10 0 0 0" VerticalAlignment="Center" FontWeight="Bold" FontSize="28" Grid.Column="0" Grid.Row="0" />
-                <TextBox x:Name="txtBox_numSSPatient" Grid.Column="0" Grid.Row="1" Margin="20 0 0 0" materialDesign:HintAssist.Hint="Numéro de sécurité sociale du patient" Width="210" VerticalAlignment="Center" HorizontalAlignment="Left" Cursor="Arrow"/>
-                <TextBox x:Name="txtBox_codePatient" Grid.Column="0" Grid.Row="1" Margin="45 0 0 0" TextAlignment="Center" materialDesign:HintAssist.Hint="Code secret" Width="70" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                <TextBox x:Name="txtBox_numSSPatient" MaxLength="13" Grid.Column="0" Grid.Row="1" Margin="20 0 0 0" materialDesign:HintAssist.Hint="Numéro de sécurité sociale du patient" Width="210" VerticalAlignment="Center" HorizontalAlignment="Left" Cursor="Arrow"/>
+                <TextBox x:Name="txtBox_codePatient" MaxLength="6" Grid.Column="0" Grid.Row="1" Margin="45 0 0 0" TextAlignment="Center" materialDesign:HintAssist.Hint="Code secret" Width="70" VerticalAlignment="Center" HorizontalAlignment="Center" />
                 <Button x:Name="btn_recupOrdo" Click="btn_getOrdo_Click" Content="Récupérer l'ordonnance" HorizontalAlignment="Right" Grid.Column="0" Grid.Row="1" Width="auto" />
                 <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Vertical"  HorizontalAlignment="Right" Margin="0 0 10 0" VerticalAlignment="Center">
                     <TextBlock x:Name="txtBlock_nomPrenom" TextAlignment="Right" FontSize="15" FontStyle="Italic" Text="NOM Prénom" />
@@ -75,7 +75,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <Button x:Name="btn_logOut" Background="IndianRed" Content="Se déconnecter" Click="Logout" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="0" Width="auto" Cursor="Hand" />
+                <Button x:Name="btn_logOut" BorderBrush="IndianRed" Background="IndianRed" Content="Se déconnecter" Click="Logout" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="0" Width="auto" Cursor="Hand" />
                 <Button x:Name="btn_updateOrdo" Click="btn_updateOrdo_Click" Content="Mettre à jour l'ordonnance" Grid.Column="1" Grid.Row="0" Width="auto" HorizontalAlignment="Right" />
             </Grid>
         </StackPanel>

@@ -10,7 +10,7 @@
         xmlns:views="clr-namespace:MastercampProjectG139.Views"
         mc:Ignorable="d"
         
-        Title="OrdOnline - Vue Médecin" Height="475" Width="800">
+        Title="OrdOnline - Vue Médecin" Height="480" Width="800">
 
     <!--<Window.Resources>
         <DataTemplate x:Name="addMedTemplate" DataType="{x:Type viewmodels:AddMedModel}">
@@ -72,7 +72,7 @@
         <DockPanel x:Name="panelBottom" VerticalAlignment="Bottom" HorizontalAlignment="Stretch">
             <Grid Height="65" Margin="10 0 10 0" DockPanel.Dock="Bottom">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="2*" />
                     <ColumnDefinition Width="2*" />
                     <ColumnDefinition Width="3*" />
                     <ColumnDefinition Width="*" />
@@ -82,9 +82,8 @@
                 </Grid.RowDefinitions>
 
                 <Button x:Name="btn_logOut" Background="IndianRed" Content="Se déconnecter" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="0" Width="auto" Click="Logout" BorderBrush="IndianRed" Cursor="Hand" />
-                <Button x:Name="btnTest" Content="Test" Grid.Column="0" Grid.Row="0" Width="60" HorizontalAlignment="Right" Click="btnTest_Click" />
                 <TextBox x:Name="txtBox_mailPatient" Grid.Column="1" materialDesign:HintAssist.Hint="Adresse mail du patient" Width="130" VerticalAlignment="Center" HorizontalAlignment="Right" />
-                <TextBox x:Name="txtBox_numSSPatient" Grid.Column="2" materialDesign:HintAssist.Hint="Numéro de sécurité sociale du patient" Width="210" VerticalAlignment="Center" Cursor="Arrow" />
+                <TextBox x:Name="txtBox_numSSPatient" Grid.Column="2" MaxLength="13" materialDesign:HintAssist.Hint="Numéro de sécurité sociale du patient" Width="210" VerticalAlignment="Center" Cursor="Arrow" />
                 <Button x:Name="btn_validate" Content="Valider" Grid.Column="3" Grid.Row="0" Width="auto" Click="pdfratio" />
             </Grid>
         </DockPanel>

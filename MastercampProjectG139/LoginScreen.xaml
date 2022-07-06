@@ -21,7 +21,7 @@
                 <TextBlock HorizontalAlignment="Center" Margin="0 25 0 5" Text="Bienvenue" FontSize="28" FontWeight="Bold"/>
                 <TextBlock Text="Connectez-vous à votre compte" HorizontalAlignment="Center" FontSize="17" FontWeight="SemiBold"/>
 
-                <TextBox Margin="0 50 0 0" x:Name="txtNumSecu" KeyDown="login_EnterDown"
+                <TextBox Margin="0 50 0 0" x:Name="txtNumSecu" KeyDown="login_EnterDown" MaxLength="13"
                          Width="300" FontSize="18" BorderThickness="2"
                          materialDesign:HintAssist.Hint="Numéro de sécurité sociale"
                          Style="{StaticResource MaterialDesignOutlinedTextBox}"
