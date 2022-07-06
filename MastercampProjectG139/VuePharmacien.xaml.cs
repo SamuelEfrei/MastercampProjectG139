@@ -147,7 +147,16 @@ namespace MastercampProjectG139
                     cmd2.Parameters.AddWithValue("@idordo", idOrdo);
                     cmd2.Parameters.AddWithValue("@idmedic", idMedic);
                     cmd2.ExecuteNonQuery();
+
+                    String query3 = "UPDATE Ordonnance SET idPharma=@idpharma WHERE idOrdo=@idordo";
+                    MySqlCommand cmd3 = new MySqlCommand(query3, conn);
+                    cmd3.CommandType = System.Data.CommandType.Text;
+                    cmd3.Parameters.AddWithValue("@idordo", idOrdo);
+                    cmd3.Parameters.AddWithValue("@idpharma", pharmacien.IdPharma);
+                    cmd3.ExecuteNonQuery();
+
                     conn.Close();
+
                     med.Status = true;
                 }
             }
