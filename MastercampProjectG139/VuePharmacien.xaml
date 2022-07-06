@@ -20,7 +20,6 @@
                 <MenuItem Header="_Edition" Style="{x:Null}">
                     <MenuItem Header="_Ajouter un médicament" Style="{x:Null}" />
                 </MenuItem>
-                <MenuItem Header="_Aide" Style="{x:Null}" />
                 <MenuItem Header="A Propos" Style="{x:Null}" Click="About_Click" />
             </Menu>
         </DockPanel>
