@@ -136,6 +136,7 @@ namespace MastercampProjectG139
                     cmd2.Parameters.AddWithValue("@idmedic", idMedic);
                     cmd2.ExecuteNonQuery();
                     conn.Close();
+                    med.Status = true;
                 }
             }
             //Insérer ici les fonctions pour refresh

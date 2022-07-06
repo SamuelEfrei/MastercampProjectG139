@@ -14,7 +14,7 @@ namespace MastercampProjectG139.Models
         public string Name { get;}
         public string Frequence { get;}
         public string Duration { get;}
-        public bool Status { get;}
+        public bool Status { get; set; }
 
     
         public ModelMedicament(int id, string name, string frequence, string duration, bool status, int idOrdo)
