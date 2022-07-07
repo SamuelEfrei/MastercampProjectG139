@@ -23,7 +23,7 @@ namespace MastercampProjectG139
             PdfPage page = doc.AddPage();
 
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-            doc.Info.Title = "ratio";
+            doc.Info.Title = "Ordonnance";
             XGraphics gfx = XGraphics.FromPdfPage(page);
             XFont font;
             font = new("Verdana", 15, XFontStyle.Italic);
